@@ -11,7 +11,10 @@
     "start": "ember server",
     "test": "ember try:each"
   },
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/webark/ember-cli-preprocessor-registry.git"
+  },
   "engines": {
     "node": ">= 0.10.0"
   },
