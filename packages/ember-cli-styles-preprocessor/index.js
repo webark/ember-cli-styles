@@ -2,46 +2,50 @@
 'use strict';
 
 var path = require('path');
+var Concat = require('broccoli-concat');
+var Merge = require('broccoli-merge-trees');
+
+var preprocessors = {
+  sass: {
+    preprocessor: 'broccoli-sass-source-maps',
+    extentions: ['scss', 'sass']
+  },
+  less: {
+    preprocessor: 'broccoli-less-single'
+  },
+  stylus: {
+    preprocessor: 'broccoli-stylus-single',
+    extentions: 'styl'
+  }
+};
 
 module.exports = {
 
   setupPreprocessorRegistry: function(type, registry) {
-    console.log(type);
-    registry.remove('css', 'broccoli-less-single');
-    registry.remove('css', 'broccoli-sass-source-maps');
-    registry.remove('css', 'broccoli-stylus-single', 'styl');
-    registry.add('css', {
-      name: 'css-preprocess-stylus',
-      ext: 'styl',
-      toTree: function(tree, inputPath, outputPath, options) {
-        var Preprocessor = require('broccoli-stylus-single');
-        var input = path.join(inputPath, 'app' + '.' + this.ext);
-        var output = options.outputPaths.app + '.' + this.ext;
-        var preprocessedFiles = new Preprocessor([tree], input, output, options);
-        return new Merge([tree, preprocessedFiles]);
-      },
-    });
-    registry.add('css', {
-      name: 'css-preprocess-less',
-      ext: 'less',
-      toTree: function(tree, inputPath, outputPath, options) {
-        var Preprocessor = require('broccoli-less-single');
-        var input = path.join(inputPath, 'app' + '.' + this.ext);
-        var output = options.outputPaths.app + '.' + this.ext;
-        var preprocessedFiles = new Preprocessor([tree], input, output, options);
-        return new Merge([tree, preprocessedFiles]);
-      },
-    });
-    registry.add('css', {
-      name: 'css-preprocess-sass',
-      ext: ['scss', 'sass'],
-      toTree: function(tree, inputPath, outputPath, options) {
-        var Preprocessor = require('broccoli-sass-source-maps');
-        var input = path.join(inputPath, 'app' + '.' + this.ext[0]);
-        var output = options.outputPaths.app + '.' + this.ext[0];
-        var preprocessedFiles = new Preprocessor([tree], input, output, options);
-        return new Merge([tree, preprocessedFiles]);
-      },
+    Object.keys(preprocessors).forEach(function(type) {
+
+      var item = preprocessors[type];
+      var extentions = item.extentions || type;
+
+      registry.add('css', {
+        name: 'css-preprocess-' + type,
+        ext: extentions,
+        toTree: function(tree, inputPath, outputPath, options) {
+
+          var Preprocessor = require(item.preprocessor);
+          var allExtentions = Array.isArray(extentions) ? extentions : [extentions];
+
+          var preprocessedTrees = allExtentions.map(function(extention) {
+
+            var input = path.join(inputPath, 'app' + '.' + extention);
+            var output = options.outputPaths.app + '.' + extention;
+
+            return new Preprocessor([tree], input, output, options);
+          });
+
+          return new Merge(preprocessedTrees.concat(tree));
+        }
+      });
     });
   },
 
