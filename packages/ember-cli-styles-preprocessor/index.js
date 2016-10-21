@@ -1,63 +1,52 @@
 /* jshint node: true */
 'use strict';
 
-var path = require('path');
 var Concat = require('broccoli-concat');
 var Merge = require('broccoli-merge-trees');
+var Filter = require('broccoli-persistent-filter');
+var Funnel = require('broccoli-funnel');
 
 var preprocessors = {
-  sass: {
-    preprocessor: 'broccoli-sass-source-maps',
-    extentions: ['scss', 'sass']
-  },
-  less: {
-    preprocessor: 'broccoli-less-single'
-  },
-  stylus: {
-    preprocessor: 'broccoli-stylus-single',
-    extentions: 'styl'
-  }
+  sass: 'broccoli-sass-source-maps',
+  scss: 'broccoli-sass-source-maps',
+  less: 'broccoli-less-single',
+  styl: 'broccoli-stylus-single'
 };
 
 module.exports = {
 
   setupPreprocessorRegistry: function(type, registry) {
-    Object.keys(preprocessors).forEach(function(type) {
+    registry.add('css', {
+      name: 'ember-cli-css-extensions',
+      ext: Object.keys(preprocessors),
+      toTree: function(tree, inputPath, outputPath, options) {
+        for (type in options.outputPaths) {
+          var input = inputPath.slice(1);
+          input = input ? input + '/' : input;
 
-      var item = preprocessors[type];
-      var extentions = item.extentions || type;
+          var allRees = Object.keys(preprocessors).map(function(extention) {
+            var filePath = input + type + '.' + extention;
+            var fileOut = options.outputPaths[type] + '.' + extention;
+            options = options || {};
+            options.sourceMap = true;
 
-      registry.add('css', {
-        name: 'css-preprocess-' + type,
-        ext: extentions,
-        toTree: function(tree, inputPath, outputPath, options) {
-
-          var Preprocessor = require(item.preprocessor);
-          var allExtentions = Array.isArray(extentions) ? extentions : [extentions];
-
-          var preprocessedTrees = allExtentions.map(function(extention) {
-
-            var input = path.join(inputPath, 'app' + '.' + extention);
-            var output = options.outputPaths.app + '.' + extention;
-
-            return new Preprocessor([tree], input, output, options);
+            return new require(preprocessors[extention])([tree], filePath, fileOut, options);
           });
+          allRees = new Merge(allRees);
 
-          return new Merge(preprocessedTrees.concat(tree));
+          var inputFiles = options.outputPaths[type] + '.{' + Object.keys(preprocessors) + '}';
+          inputFiles = /^\//.test(inputFiles) ? inputFiles.slice(1) : inputFiles;
+
+          var node = new Concat(allRees, {
+            outputFile: options.outputPaths[type],
+            inputFiles: [inputFiles],
+            sourceMapConfig: { enabled: true },
+            allowNone: true
+          });
         }
-      });
+        return new Merge([node, tree]);
+      }
     });
-  },
-
-  postprocessTree: function(type, tree) {
-    if (type === 'css') {
-      tree = Concat(tree, {
-        outputFile: 'assets/' + this.app.name + '.css',
-        inputFiles: ['**/' + this.app.name + '.css.*'],
-        sourceMapConfig: { enabled: true },
-      });
-    }
-    return tree;
   },
 
   name: 'ember-cli-css-extensions'
