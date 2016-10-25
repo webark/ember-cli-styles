@@ -3,8 +3,6 @@
 
 var Concat = require('broccoli-concat');
 var Merge = require('broccoli-merge-trees');
-var Filter = require('broccoli-persistent-filter');
-var Funnel = require('broccoli-funnel');
 
 var preprocessors = {
   sass: 'broccoli-sass-source-maps',
