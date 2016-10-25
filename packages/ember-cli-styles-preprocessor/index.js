@@ -8,7 +8,8 @@ var preprocessors = {
   sass: 'broccoli-sass-source-maps',
   scss: 'broccoli-sass-source-maps',
   less: 'broccoli-less-single',
-  styl: 'broccoli-stylus-single'
+  styl: 'broccoli-stylus-single',
+  css: 'broccoli-postcss-single'
 };
 
 module.exports = {
@@ -25,10 +26,14 @@ module.exports = {
           var allRees = Object.keys(preprocessors).map(function(extention) {
             var filePath = input + type + '.' + extention;
             var fileOut = options.outputPaths[type] + '.' + extention;
-            options = options || {};
-            options.sourceMap = true;
-
-            return new require(preprocessors[extention])([tree], filePath, fileOut, options);
+            var precompileOptions = options || {};
+            precompileOptions.sourceMap = true;
+            if (extention === 'css') {
+              precompileOptions = [{
+                module: require('postcss-import')
+              }]
+            }
+            return new require(preprocessors[extention])([tree], filePath, fileOut, precompileOptions);
           });
           allRees = new Merge(allRees);
 
@@ -42,7 +47,7 @@ module.exports = {
             allowNone: true
           });
         }
-        return new Merge([node, tree]);
+        return new Merge([node]);
       }
     });
   },

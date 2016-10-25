@@ -49,9 +49,11 @@
   "dependencies": {
     "broccoli-less-single": "^0.6.3",
     "broccoli-merge-trees": "^1.1.4",
+    "broccoli-postcss-single": "^1.0.1",
     "broccoli-sass-source-maps": "^1.8.1",
     "broccoli-stylus-single": "^1.0.0",
-    "ember-cli-babel": "^5.1.7"
+    "ember-cli-babel": "^5.1.7",
+    "postcss-import": "^8.1.2"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
