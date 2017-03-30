@@ -1,6 +1,6 @@
 {
-  "name": "ember-cli-css-extensions",
-  "version": "0.0.5",
+  "name": "ember-cli-styles-preprocessor",
+  "version": "0.0.6",
   "description": "The default blueprint for ember-cli addons.",
   "directories": {
     "doc": "doc",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/webark/ember-cli-css-extensions.git"
+    "url": "https://github.com/webark/ember-cli-styles-preprocessor.git"
   },
   "engines": {
     "node": ">= 0.12.0"
