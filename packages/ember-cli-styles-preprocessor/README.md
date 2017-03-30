@@ -1,11 +1,11 @@
-# Ember-cli-css-extensions
+# ember-cli-styles-preprocessor
 
 This README outlines the details of collaborating on this Ember addon.
 
 ## Installation
 
 * `git clone <repository-url>` this repository
-* `cd ember-cli-css-extensions`
+* `cd ember-cli-styles-preprocessor`
 * `npm install`
 * `bower install`
 
@@ -24,4 +24,4 @@ This README outlines the details of collaborating on this Ember addon.
 
 * `ember build`
 
-For more information on using ember-cli, visit [http://ember-cli.com/](http://ember-cli.com/).
+For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).

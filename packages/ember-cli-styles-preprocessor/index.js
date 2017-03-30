@@ -1,4 +1,4 @@
-/* jshint node: true */
+/* eslint-env node */
 'use strict';
 
 var Concat = require('broccoli-concat');
@@ -13,10 +13,9 @@ var preprocessors = {
 };
 
 module.exports = {
-
   setupPreprocessorRegistry: function(type, registry) {
     registry.add('css', {
-      name: 'ember-cli-css-extensions',
+      name: 'ember-cli-styles-preprocessor',
       ext: Object.keys(preprocessors),
       toTree: function(tree, inputPath, outputPath, options) {
         for (type in options.outputPaths) {
@@ -33,6 +32,7 @@ module.exports = {
                 module: require('postcss-import')
               }]
             }
+
             return new require(preprocessors[extention])([tree], filePath, fileOut, precompileOptions);
           });
           allRees = new Merge(allRees);
@@ -52,5 +52,5 @@ module.exports = {
     });
   },
 
-  name: 'ember-cli-css-extensions'
+  name: 'ember-cli-styles-preprocessor'
 };
