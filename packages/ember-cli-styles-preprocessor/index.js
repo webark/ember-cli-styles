@@ -1,53 +1,72 @@
 /* eslint-env node */
 'use strict';
 
-var Concat = require('broccoli-concat');
-var Merge = require('broccoli-merge-trees');
+const Concat = require('broccoli-concat');
+const Merge = require('broccoli-merge-trees');
+const path = require('path');
 
-var preprocessors = {
-  sass: 'broccoli-sass-source-maps',
-  scss: 'broccoli-sass-source-maps',
-  less: 'broccoli-less-single',
-  styl: 'broccoli-stylus-single',
-  css: 'broccoli-postcss-single'
+const preprocessors = {
+  sass: {
+    broccoliPlugin: 'broccoli-sass-source-maps',
+    options: {
+      sourceMap: true,
+    },
+  },
+  scss: {
+    broccoliPlugin: 'broccoli-sass-source-maps',
+    options: {
+      sourceMap: true,
+    },
+  },
+  less: {
+    broccoliPlugin: 'broccoli-less-single',
+    options: {
+      sourceMap: true,
+    },
+  },
+  styl: {
+    broccoliPlugin: 'broccoli-stylus-single',
+    options: {
+      sourceMap: true,
+    },
+  },
+  css: {
+    broccoliPlugin: 'broccoli-postcss-single',
+    options: [{
+      module: require('postcss-import'),
+    }],
+  },
 };
+
+function preprocess(node, type, inputPath, outputPaths) {
+  return Object.keys(preprocessors).map(function(extention) {
+    let filePath = path.join(inputPath, `${type}.${extention}`);
+    let fileOut = `${outputPaths[type]}.${extention}`;
+    let precompileOptions = preprocessors[extention].options;
+
+    return new require(preprocessors[extention].broccoliPlugin)([node], filePath, fileOut, precompileOptions);
+  });
+}
 
 module.exports = {
   setupPreprocessorRegistry: function(type, registry) {
     registry.add('css', {
       name: 'ember-cli-styles-preprocessor',
       ext: Object.keys(preprocessors),
-      toTree: function(tree, inputPath, outputPath, options) {
-        for (type in options.outputPaths) {
-          var input = inputPath.slice(1);
-          input = input ? input + '/' : input;
+      toTree: function(node, inputPath, outputPath, { outputPaths }) {
+        for (type in outputPaths) {
 
-          var allRees = Object.keys(preprocessors).map(function(extention) {
-            var filePath = input + type + '.' + extention;
-            var fileOut = options.outputPaths[type] + '.' + extention;
-            var precompileOptions = options || {};
-            precompileOptions.sourceMap = true;
-            if (extention === 'css') {
-              precompileOptions = [{
-                module: require('postcss-import')
-              }]
-            }
+          let preprocessedNodes = new Merge(preprocess(node, type, inputPath, outputPaths));
 
-            return new require(preprocessors[extention])([tree], filePath, fileOut, precompileOptions);
-          });
-          allRees = new Merge(allRees);
+          let inputFiles = path.join(outputPaths[type] + '.{' + this.ext + '}').split(path.sep).filter(Boolean).join(path.sep);
 
-          var inputFiles = options.outputPaths[type] + '.{' + Object.keys(preprocessors) + '}';
-          inputFiles = /^\//.test(inputFiles) ? inputFiles.slice(1) : inputFiles;
-
-          var node = new Concat(allRees, {
-            outputFile: options.outputPaths[type],
+          return new Concat(preprocessedNodes, {
+            outputFile: outputPaths[type],
             inputFiles: [inputFiles],
             sourceMapConfig: { enabled: true },
             allowNone: true
           });
         }
-        return new Merge([node]);
       }
     });
   },
