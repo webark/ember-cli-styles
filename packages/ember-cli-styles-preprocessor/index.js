@@ -38,13 +38,14 @@ const preprocessors = {
   },
 };
 
-function preprocess(node, type, inputPath, outputPaths) {
-  return Object.keys(preprocessors).map(function(extention) {
-    let filePath = path.join(inputPath, `${type}.${extention}`);
-    let fileOut = `${outputPaths[type]}.${extention}`;
-    let precompileOptions = preprocessors[extention].options;
 
-    return new require(preprocessors[extention].broccoliPlugin)([node], filePath, fileOut, precompileOptions);
+
+function preprocess(styleNode, infile, outfile) {
+  return Object.keys(preprocessors).map(function(extention) {
+    let fileIn = `${infile}.${extention}`;
+    let fileOut = `${outfile}.${extention}`;
+    let preprocessor = preprocessors[extention];
+    return new require(preprocessor.broccoliPlugin)([styleNode], fileIn, fileOut, preprocessor.options);
   });
 }
 
@@ -54,19 +55,24 @@ module.exports = {
       name: 'ember-cli-styles-preprocessor',
       ext: Object.keys(preprocessors),
       toTree: function(node, inputPath, outputPath, { outputPaths }) {
-        for (type in outputPaths) {
+        let styles = [];
+        for (let project in outputPaths) {
+          let infile = path.join(inputPath, project);
+          let outfile = outputPaths[project];
 
-          let preprocessedNodes = new Merge(preprocess(node, type, inputPath, outputPaths));
+          let preprocessedNodes = new Merge(preprocess(node, infile, outfile));
 
-          let inputFiles = path.join(outputPaths[type] + '.{' + this.ext + '}').split(path.sep).filter(Boolean).join(path.sep);
+          let inputFiles = path.join(outfile + '.{' + this.ext.join(',') + ',}').split(path.sep).filter(Boolean).join(path.sep);
 
-          return new Concat(preprocessedNodes, {
-            outputFile: outputPaths[type],
+          styles.push(new Concat(preprocessedNodes, {
+            outputFile: outfile,
             inputFiles: [inputFiles],
             sourceMapConfig: { enabled: true },
             allowNone: true
-          });
+          }));
         }
+
+        return new Merge(styles);
       }
     });
   },
