@@ -16,22 +16,12 @@ class Preprocessors {
     return Object.keys(this.preprocessors);
   }
 
-  toTree(node, inputPath, outputPath, { outputPaths }) {
-    let styles = [];
-    for (let project in outputPaths) {
-      let infile = path.join(inputPath, project);
-      let outfile = outputPaths[project];
-      styles.push(this.handleProject(node, infile, outfile));
-    }
-    return new Merge(styles);
+  preprocess({ nodeToProcess, fileToProcess, processedFile }) {
+    let preprocessedNode = this.preprocessNode(nodeToProcess, fileToProcess, processedFile);
+    return this.concatStyleFiles(preprocessedNode, processedFile);
   }
 
-  handleProject(node, inFile, outFile) {
-    let preprocessedNode = this.preprocessNodes(...arguments);
-    return this.singleStyle(preprocessedNode, outFile);
-  }
-
-  preprocessNodes(node, inFile, outFile)  {
+  preprocessNode(node, inFile, outFile)  {
     return this.extentions.map((extention) => {
       let fileIn = `${inFile}.${extention}`;
       let fileOut = `${outFile}.${extention}`;
@@ -49,7 +39,7 @@ class Preprocessors {
     });
   }
 
-  singleStyle(preprocessedNode, outFile) {
+  concatStyleFiles(preprocessedNode, outFile) {
     preprocessedNode = new Merge(preprocessedNode);
     return new Concat(preprocessedNode, {
       outputFile: outFile,

@@ -6,12 +6,14 @@ module.exports = {
     broccoliPlugin: 'broccoli-sass-source-maps',
     options: {
       sourceMap: true,
+      sourceMapEmbed: true,
     },
   },
   scss: {
     broccoliPlugin: 'broccoli-sass-source-maps',
     options: {
       sourceMap: true,
+      sourceMapEmbed: true,
     },
   },
   less: {
