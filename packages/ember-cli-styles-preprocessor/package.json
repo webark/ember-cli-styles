@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-styles-preprocessor",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "An addon for using one or multiple css preprocessors.",
   "keywords": [
     "ember-addon"
