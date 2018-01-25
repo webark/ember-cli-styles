@@ -14,7 +14,7 @@ module.exports = {
   setupPreprocessorRegistry(type, registry) {
     registry.add('css', {
       name: 'ember-cli-styles-preprocessor',
-      ext: preprocessor.extentions,
+      ext: preprocessor.extensions,
       toTree(node, inputPath, outputPath, { outputPaths }) {
         let styles = [];
         for (let project in outputPaths) {

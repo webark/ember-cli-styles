@@ -12,23 +12,29 @@ class Preprocessors {
     this.preprocessors = preprocessors;
   }
 
-  get extentions() {
+  get extensions() {
     return Object.keys(this.preprocessors);
   }
 
-  preprocess({ nodeToProcess, fileToProcess, processedFile }) {
-    let preprocessedNode = this.preprocessNode(nodeToProcess, fileToProcess, processedFile);
+  preprocess({
+    nodeToProcess,
+    fileToProcess,
+    processedFile,
+  }) {
+    let preprocessedNode =
+      this.preprocessNode(nodeToProcess, fileToProcess, processedFile);
     return this.concatStyleFiles(preprocessedNode, processedFile);
   }
 
   preprocessNode(node, inFile, outFile)  {
-    return this.extentions.map((extention) => {
+    return this.extensions.map((extention) => {
       let fileIn = `${inFile}.${extention}`;
       let fileOut = `${outFile}.${extention}`;
       let preprocessor = this.preprocessors[extention];
+      let preprocessorOptions = preprocessor.options;
 
       node = this.ensureFile(fileIn, node);
-      return new require(preprocessor.broccoliPlugin)([node], fileIn, fileOut, preprocessor.options);
+      return new require(preprocessor.broccoliPlugin)([node], fileIn, fileOut, preprocessorOptions);
     });
   }
 
@@ -44,13 +50,16 @@ class Preprocessors {
     return new Concat(preprocessedNode, {
       outputFile: outFile,
       inputFiles: [this.styleFiles(outFile)],
-      sourceMapConfig: { enabled: true },
+      sourceMapConfig: {
+        enabled: true,
+        extensions: ['css']
+      },
       allowNone: true
     })
   }
 
   styleFiles(outFile) {
-    return path.join(`${outFile}.{${this.extentions.join(',')},}`)
+    return path.join(`${outFile}.{${this.extensions.join(',')},}`)
       .split(path.sep).filter(Boolean).join(path.sep);
   }
 }
