@@ -51,7 +51,7 @@ class Preprocessors {
       outputFile: outFile,
       inputFiles: [this.styleFiles(outFile)],
       sourceMapConfig: {
-        enabled: true,
+        enabled: false,
         extensions: ['css']
       },
       allowNone: true
