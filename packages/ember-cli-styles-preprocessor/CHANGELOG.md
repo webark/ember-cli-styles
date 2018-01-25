@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.1.1"></a>
+## [0.1.1](https://github.com/webark/ember-cli-styles-preprocessor/compare/v0.1.0...v0.1.1) (2018-01-25)
+
+
+### Bug Fixes
+
+* **source maps:** trunning off sourcemap generation for the time being due to it causing issues. ([3fdaf37](https://github.com/webark/ember-cli-styles-preprocessor/commit/3fdaf37))
+
+
+
 <a name="0.1.0"></a>
 # [0.1.0](https://github.com/webark/ember-cli-styles-preprocessor/compare/v0.0.9...v0.1.0) (2018-01-25)
 
