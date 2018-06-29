@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.1.3"></a>
+## [0.1.3](https://github.com/webark/ember-cli-styles-preprocessor/compare/v0.1.2...v0.1.3) (2018-06-29)
+
+
+### Bug Fixes
+
+* **postcss:** postcss changed the way that plugins are included ([5a1c758](https://github.com/webark/ember-cli-styles-preprocessor/commit/5a1c758))
+
+
+
 <a name="0.1.2"></a>
 ## [0.1.2](https://github.com/webark/ember-cli-styles-preprocessor/compare/v0.1.1...v0.1.2) (2018-06-29)
 
