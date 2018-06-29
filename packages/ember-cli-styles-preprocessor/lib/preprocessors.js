@@ -29,8 +29,11 @@ module.exports = {
   },
   css: {
     broccoliPlugin: 'broccoli-postcss-single',
-    options: [{
-      module: require('postcss-import'),
-    }],
+    options: {
+      plugins: [{
+        module: require('postcss-import'),
+      }],
+      map: true,
+    },
   },
 };
