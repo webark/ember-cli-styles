@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/webark/ember-cli-styles-preprocessor/compare/v0.1.3...v0.2.0) (2018-07-19)
+
+
+### Features
+
+* **sass:** upgraded to latest sass version. Also now using dart-sass with fibers rather then lib-sass ([b4a10bc](https://github.com/webark/ember-cli-styles-preprocessor/commit/b4a10bc))
+
+
+
 <a name="0.1.3"></a>
 ## [0.1.3](https://github.com/webark/ember-cli-styles-preprocessor/compare/v0.1.2...v0.1.3) (2018-06-29)
 
