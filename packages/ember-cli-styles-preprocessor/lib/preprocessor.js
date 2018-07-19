@@ -1,12 +1,9 @@
-'use strict';
-
 const Concat = require('broccoli-concat');
 const Merge = require('broccoli-merge-trees');
 const WriteFile = require('broccoli-file-creator');
 const path = require('path');
 
-class Preprocessors {
-
+module.exports = class Preprocessors {
   constructor(preprocessors) {
     this.preprocessors = preprocessors;
   }
@@ -20,25 +17,24 @@ class Preprocessors {
     fileToProcess,
     processedFile,
   }) {
-    let preprocessedNode =
-      this.preprocessNode(nodeToProcess, fileToProcess, processedFile);
+    const preprocessedNode = this.preprocessNode(nodeToProcess, fileToProcess, processedFile);
     return this.concatStyleFiles(preprocessedNode, processedFile);
   }
 
   preprocessNode(node, inFile, outFile)  {
     return this.extensions.map((extention) => {
-      let fileIn = `${inFile}.${extention}`;
-      let fileOut = `${outFile}.${extention}`;
-      let preprocessor = this.preprocessors[extention];
-      let preprocessorOptions = preprocessor.options;
+      const fileIn = `${inFile}.${extention}`;
+      const fileOut = `${outFile}.${extention}`;
+      const preprocessor = this.preprocessors[extention];
+      const preprocessorOptions = preprocessor.options;
 
       node = this.ensureFile(fileIn, node);
-      return new require(preprocessor.broccoliPlugin)([node], fileIn, fileOut, preprocessorOptions);
+      return new preprocessor.broccoliPlugin([node], fileIn, fileOut, preprocessorOptions);
     });
   }
 
   ensureFile(fileIn, node) {
-    let newFile = WriteFile(fileIn, '');
+    const newFile = WriteFile(fileIn, '');
     return new Merge([newFile, node], {
       overwrite: true
     });
@@ -62,5 +58,3 @@ class Preprocessors {
       .split(path.sep).filter(Boolean).join(path.sep);
   }
 }
-
-module.exports = Preprocessors

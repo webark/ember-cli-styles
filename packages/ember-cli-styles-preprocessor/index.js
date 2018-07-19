@@ -1,5 +1,3 @@
-'use strict';
-
 const Merge = require('broccoli-merge-trees');
 const path = require('path');
 
@@ -15,7 +13,7 @@ module.exports = {
       name: 'ember-cli-styles-preprocessor',
       ext: preprocessor.extensions,
       toTree(node, inputPath, outputPath, options) {
-        let styles = [];
+        const styles = [];
         for (let project in options.outputPaths) {
           styles.push(preprocessor.preprocess({
             nodeToProcess: node,

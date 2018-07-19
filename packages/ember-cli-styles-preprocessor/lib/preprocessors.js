@@ -1,34 +1,34 @@
-'use strict';
-
 module.exports = {
   sass: {
-    broccoliPlugin: 'broccoli-sass-source-maps',
+    broccoliPlugin: require('broccoli-sass-source-maps')(require('sass')),
     options: {
       sourceMap: true,
       sourceMapEmbed: true,
+      fiber: require('fibers'),
     },
   },
   scss: {
-    broccoliPlugin: 'broccoli-sass-source-maps',
+    broccoliPlugin: require('broccoli-sass-source-maps')(require('sass')),
     options: {
       sourceMap: true,
       sourceMapEmbed: true,
+      fiber: require('fibers'),
     },
   },
   less: {
-    broccoliPlugin: 'broccoli-less-single',
+    broccoliPlugin: require('broccoli-less-single'),
     options: {
       sourceMap: true,
     },
   },
   styl: {
-    broccoliPlugin: 'broccoli-stylus-single',
+    broccoliPlugin: require('broccoli-stylus-single'),
     options: {
       sourceMap: true,
     },
   },
   css: {
-    broccoliPlugin: 'broccoli-postcss-single',
+    broccoliPlugin: require('broccoli-postcss-single'),
     options: {
       plugins: [{
         module: require('postcss-import'),
