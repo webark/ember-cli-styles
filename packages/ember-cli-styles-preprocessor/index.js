@@ -1,3 +1,5 @@
+'use strict';
+
 const Merge = require('broccoli-merge-trees');
 const path = require('path');
 
@@ -26,5 +28,5 @@ module.exports = {
     });
   },
 
-  name: 'ember-cli-styles-preprocessor'
+  name: require('./package').name
 };
