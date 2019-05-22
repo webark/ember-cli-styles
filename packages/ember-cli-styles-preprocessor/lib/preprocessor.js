@@ -9,42 +9,64 @@ const WriteFile = require('broccoli-file-creator');
 module.exports = class Preprocessors {
   constructor(preprocessors) {
     this.preprocessors = preprocessors;
+    this.ext = this.extensions;
+  }
+
+  get name() {
+    return 'ember-cli-styles-preprocessor';
   }
 
   get extensions() {
-    return Object.keys(this.preprocessors);
+    if (!this._extentions) {
+      this._extentions = Object.keys(this.preprocessors);
+    }
+    return this._extentions;
   }
 
-  preprocess({
-    nodeToProcess,
-    fileToProcess,
-    processedFile,
-  }) {
-    const preprocessedNode = this.preprocessNode(nodeToProcess, fileToProcess, processedFile);
-    return this.concatStyleFiles(preprocessedNode, processedFile);
+  toTree(node, inputPath, outputPath, options) {
+    const styles = [];
+
+    for (const [project, outFile] of Object.entries(options.outputPaths)) {
+      styles.push(this.preprocess({
+        node,
+        outFile,
+        inFile: path.join(inputPath, project),
+      }));
+    }
+
+    return new Merge(styles);
+  }
+
+  preprocess({ node, inFile, outFile }) {
+    const preprocessedNodes = this.preprocessNode(node, inFile, outFile);
+    return this.concatStyleFiles(new Merge(preprocessedNodes), outFile);
   }
 
   preprocessNode(node, inFile, outFile)  {
-    return this.extensions.map((extention) => {
+    return this.extensions.map(extention => {
+      const {
+        broccoliPlugin,
+        options,
+      } = this.preprocessors[extention];
+
       const fileIn = `${inFile}.${extention}`;
       const fileOut = `${outFile}.${extention}`;
-      const preprocessor = this.preprocessors[extention];
-      const preprocessorOptions = preprocessor.options;
 
-      node = this.ensureFile(fileIn, node);
-      return new preprocessor.broccoliPlugin([node], fileIn, fileOut, preprocessorOptions);
+      const nodeToPreprocess = this.ensureFile(fileIn, node);
+
+      return new broccoliPlugin([nodeToPreprocess], fileIn, fileOut, options);
     });
   }
 
   ensureFile(fileIn, node) {
     const newFile = WriteFile(fileIn, '');
+
     return new Merge([newFile, node], {
       overwrite: true
     });
   }
 
   concatStyleFiles(preprocessedNode, outFile) {
-    preprocessedNode = new Merge(preprocessedNode);
     return new Concat(preprocessedNode, {
       outputFile: outFile,
       inputFiles: [this.styleFiles(outFile)],
