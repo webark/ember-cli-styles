@@ -1,6 +1,10 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [0.5.2](https://github.com/webark/ember-cli-styles-preprocessor/compare/v0.5.1...v0.5.2) (2019-05-22)
+
+
 
 <a name="0.5.1"></a>
 ## [0.5.1](https://github.com/webark/ember-cli-styles-preprocessor/compare/v0.5.0...v0.5.1) (2018-12-11)
