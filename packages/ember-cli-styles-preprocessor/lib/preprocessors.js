@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
   sass: {
     broccoliPlugin: require('broccoli-sass-source-maps')(require('sass')),

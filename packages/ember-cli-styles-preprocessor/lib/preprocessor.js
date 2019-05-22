@@ -1,7 +1,10 @@
+'use strict';
+
+const path = require('path');
+
 const Concat = require('broccoli-concat');
 const Merge = require('broccoli-merge-trees');
 const WriteFile = require('broccoli-file-creator');
-const path = require('path');
 
 module.exports = class Preprocessors {
   constructor(preprocessors) {
