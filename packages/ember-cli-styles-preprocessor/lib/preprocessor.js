@@ -2,9 +2,9 @@
 
 const path = require('path');
 
-const Concat = require('broccoli-concat');
-const Merge = require('broccoli-merge-trees');
-const WriteFile = require('broccoli-file-creator');
+const concat = require('broccoli-concat');
+const merge = require('broccoli-merge-trees');
+const witeFile = require('broccoli-file-creator');
 
 module.exports = class Preprocessors {
   constructor(preprocessors) {
@@ -34,12 +34,12 @@ module.exports = class Preprocessors {
       }));
     }
 
-    return new Merge(styles);
+    return merge(styles);
   }
 
   preprocess({ node, inFile, outFile }) {
     const preprocessedNodes = this.preprocessNode(node, inFile, outFile);
-    return this.concatStyleFiles(new Merge(preprocessedNodes), outFile);
+    return this.concatStyleFiles(merge(preprocessedNodes), outFile);
   }
 
   preprocessNode(node, inFile, outFile)  {
@@ -53,21 +53,20 @@ module.exports = class Preprocessors {
       const fileOut = `${outFile}.${extention}`;
 
       const nodeToPreprocess = this.ensureFile(fileIn, node);
-
-      return new broccoliPlugin([nodeToPreprocess], fileIn, fileOut, options);
+      return broccoliPlugin([nodeToPreprocess], fileIn, fileOut, options);
     });
   }
 
   ensureFile(fileIn, node) {
-    const newFile = WriteFile(fileIn, '');
+    const newFile = witeFile(fileIn, '/* Empty File. If know how to conditionaly run broccoli plugins, please reach out. Thanks. */');
 
-    return new Merge([newFile, node], {
+    return merge([newFile, node], {
       overwrite: true
     });
   }
 
   concatStyleFiles(preprocessedNode, outFile) {
-    return new Concat(preprocessedNode, {
+    return concat(preprocessedNode, {
       outputFile: outFile,
       inputFiles: [this.styleFiles(outFile)],
       sourceMapConfig: {

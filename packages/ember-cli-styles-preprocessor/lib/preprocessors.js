@@ -32,10 +32,13 @@ module.exports = {
   css: {
     broccoliPlugin: require('broccoli-postcss-single'),
     options: {
-      plugins: [{
-        module: require('postcss-import'),
-      }],
       map: true,
+      plugins: [{ 
+        module: require('postcss-import'),
+      }, {
+        module: require('postcss-preset-env'),
+        options: { stage: 3 },
+      }],
     },
   },
 };
