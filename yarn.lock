@@ -3537,7 +3537,7 @@ bower-endpoint-parser@0.2.2:
   resolved "https://registry.yarnpkg.com/bower-endpoint-parser/-/bower-endpoint-parser-0.2.2.tgz#00b565adbfab6f2d35addde977e97962acbcb3f6"
   integrity sha1-ALVlrb+rby01rd3pd+l5Yqy8s/Y=
 
-brace-expansion@^1.0.0, brace-expansion@^1.1.7:
+brace-expansion@^1.1.7:
   version "1.1.11"
   resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-1.1.11.tgz#3c7fcbf529d87226f3d2f52b966ff5271eb441dd"
   integrity sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==
@@ -3721,14 +3721,6 @@ broccoli-debug@^0.6.4, broccoli-debug@^0.6.5:
     heimdalljs-logger "^0.1.7"
     symlink-or-copy "^1.1.8"
     tree-sync "^1.2.2"
-
-broccoli-empty-files@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/broccoli-empty-files/-/broccoli-empty-files-0.0.1.tgz#6caf318fc428a444ead52bc4fe77c47184a38a07"
-  integrity sha1-bK8xj8QopETq1SvE/nfEcYSjigc=
-  dependencies:
-    symlink-or-copy "^1.0.0"
-    walk-sync-matcher "^0.2.2"
 
 broccoli-file-creator@^2.1.1:
   version "2.1.1"
@@ -6008,26 +6000,6 @@ ember-cli-string-utils@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/ember-cli-string-utils/-/ember-cli-string-utils-1.1.0.tgz#39b677fc2805f55173735376fcef278eaa4452a1"
   integrity sha1-ObZ3/CgF9VFzc1N2/O8njqpEUqE=
-
-ember-cli-styles-preprocessor@*, ember-cli-styles-preprocessor@^0.5.5:
-  version "0.5.6"
-  resolved "https://registry.yarnpkg.com/ember-cli-styles-preprocessor/-/ember-cli-styles-preprocessor-0.5.6.tgz#bf3caa5fd5e359d8aa5b6ac52dd64e340f156908"
-  integrity sha512-lYb7mOmGZNi43aFih4/psoWCaWUrUgaJSb+Mz5GWwaoeByP0cvg+1g7/jRmSRHV+VBF/K35C66XPJ0QfosXshA==
-  dependencies:
-    broccoli-concat "^4.2.4"
-    broccoli-empty-files "^0.0.1"
-    broccoli-file-creator "^2.1.1"
-    broccoli-less-single "^1.0.2"
-    broccoli-merge-trees "^4.2.0"
-    broccoli-postcss-single "^4.0.1"
-    broccoli-sass-source-maps "^4.0.0"
-    broccoli-stylus-single "^1.0.0"
-    ember-cli-babel "^7.8.0"
-    ember-cli-htmlbars "^5.1.2"
-    fibers "^5.0.0"
-    postcss-import "^12.0.1"
-    postcss-preset-env "^6.7.0"
-    sass "^1.21.0"
 
 ember-cli-test-loader@^2.2.0:
   version "2.2.0"
@@ -9800,13 +9772,6 @@ minimalistic-crypto-utils@^1.0.0, minimalistic-crypto-utils@^1.0.1:
   integrity sha512-yJHVQEhyqPLUTgt9B83PXu6W3rx4MvvHvSUvToogpwoGDOUQ+yDrR0HRot+yOCdCO7u4hX3pWft6kWBBcqh0UA==
   dependencies:
     brace-expansion "^1.1.7"
-
-minimatch@^2.0.10:
-  version "2.0.10"
-  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-2.0.10.tgz#8d087c39c6b38c001b97fca7ce6d0e1e80afbac7"
-  integrity sha1-jQh8OcazjAAbl/ynzm0OHoCvusc=
-  dependencies:
-    brace-expansion "^1.0.0"
 
 minimist-options@^3.0.1:
   version "3.0.2"
@@ -13845,13 +13810,6 @@ w3c-hr-time@^1.0.1:
   integrity sha512-z8P5DvDNjKDoFIHK7q8r8lackT6l+jo/Ye3HOle7l9nICP9lf1Ci25fy9vHd0JOWewkIFzXIEig3TdKT7JQ5fQ==
   dependencies:
     browser-process-hrtime "^1.0.0"
-
-walk-sync-matcher@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/walk-sync-matcher/-/walk-sync-matcher-0.2.2.tgz#60baf44875b2d9a660876373ed7b8ece7332899f"
-  integrity sha1-YLr0SHWy2aZgh2Nz7XuOznMyiZ8=
-  dependencies:
-    minimatch "^2.0.10"
 
 walk-sync@^0.2.5:
   version "0.2.7"
