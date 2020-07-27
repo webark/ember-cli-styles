@@ -1,1 +1,1 @@
-export { default } from 'ember-component-css/modifiers/style-namespace';
+export { default } from 'ember-cli-styles-namespace/modifiers/style-namespace';

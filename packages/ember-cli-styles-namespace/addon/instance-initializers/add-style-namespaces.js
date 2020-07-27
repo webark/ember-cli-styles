@@ -1,5 +1,5 @@
-import addRouteStyleNamespace from 'ember-component-css/utils/add-route-style-namespace';
-import addComponentStyleNamespace from 'ember-component-css/utils/add-component-style-namespace';
+import addRouteStyleNamespace from 'ember-cli-styles-namespace/utils/add-route-style-namespace';
+import addComponentStyleNamespace from 'ember-cli-styles-namespace/utils/add-component-style-namespace';
 
 
 export function initialize(appInstance) {

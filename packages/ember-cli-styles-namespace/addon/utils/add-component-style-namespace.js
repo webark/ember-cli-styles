@@ -1,4 +1,4 @@
-import processStyleType from 'ember-component-css/utils/process-style-type';
+import processStyleType from 'ember-cli-styles-namespace/utils/process-style-type';
 
 export default function addComponentStyleNamespace(owner) {
   const styles = processStyleType(owner);
