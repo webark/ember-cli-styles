@@ -1,13 +1,14 @@
 {
-  "name": "ember-component-css",
-  "version": "1.0.0-alpha.2",
+  "name": "ember-cli-styles-namespace",
+  "version": "1.0.0-beta.0",
   "description": "An Ember CLI addon which allows you to specify styles for individual components",
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "ember-styles"
   ],
-  "repository": "github:ebryn/ember-component-css",
+  "repository": "github:webark/ember-cli-styles-namespace",
   "license": "MIT",
-  "author": "Erik Bryn",
+  "author": "Ember Styles",
   "directories": {
     "doc": "doc",
     "test": "tests"
