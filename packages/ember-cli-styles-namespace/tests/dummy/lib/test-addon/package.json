@@ -4,6 +4,7 @@
   "dependencies": {
     "ember-cli-babel": "*",
     "ember-cli-htmlbars": "*",
+    "ember-cli-styles-colocation": "*",
     "ember-cli-styles-preprocessor": "*"
   },
   "keywords": [

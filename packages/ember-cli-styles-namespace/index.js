@@ -1,11 +1,9 @@
 'use strict';
 
 const {
-  MoveAddonColocatedStyles,
-  ColocateStyles,
   NamespaceStyles,
   ColocatedNamespaceObjects,
-} = require('./lib/colocate-namespace.js');
+} = require('./lib/namespace.js');
 
 const {
   NamespaceModifierAst,
@@ -34,31 +32,13 @@ module.exports = {
     };
   },
 
-  isAddon() {
-    return Boolean(this.parent.parent);
-  },
-
   setupPreprocessorRegistry(type, registry) {
     const options = this._options(registry);
 
-    if (this.isAddon()) {
-      this.addAddonStyleHack(registry, options);
-    }
-    
-    registry.add('css', new ColocateStyles(options));
     registry.add('css', new NamespaceStyles(options));
     registry.add('js', new ColocatedNamespaceObjects(options));
 
     registry.add('htmlbars-ast-plugin', new NamespaceModifierAst());
-  },
-
-  addAddonStyleHack(registry, options) {
-    const addonRealDir = require('path').join(registry.app.root, registry.app.treePaths.addon);
-
-    registry.add('css', new MoveAddonColocatedStyles({
-      addonRealDir,
-      ...options,
-    }));
   },
 
   name: require('./package').name
