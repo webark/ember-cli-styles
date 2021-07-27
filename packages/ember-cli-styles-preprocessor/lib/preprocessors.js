@@ -6,7 +6,6 @@ module.exports = {
     options: {
       sourceMap: true,
       sourceMapEmbed: true,
-      fiber: require('fibers'),
     },
   },
   scss: {
@@ -14,7 +13,6 @@ module.exports = {
     options: {
       sourceMap: true,
       sourceMapEmbed: true,
-      fiber: require('fibers'),
     },
   },
   less: {
@@ -33,7 +31,7 @@ module.exports = {
     broccoliPlugin: require('broccoli-postcss-single'),
     options: {
       map: true,
-      plugins: [{ 
+      plugins: [{
         module: require('postcss-import'),
       }, {
         module: require('postcss-preset-env'),
