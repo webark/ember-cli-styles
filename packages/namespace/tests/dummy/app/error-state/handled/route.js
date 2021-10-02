@@ -1,16 +1,16 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
-import RSVP from 'rsvp';
+import { action } from '@ember/object';
 
-export default Route.extend({
-  router: service(),
+export default class extends Route {
+  @service router;
+
   model() {
-    return new RSVP.Promise.reject();
-  },
+    return new Promise.reject();
+  }
 
-  actions: {
-    error() {
-      this.router.transitionTo('error-state');
-    },
-  },
-});
+  @action
+  error() {
+    this.router.transitionTo('error-state');
+  }
+}

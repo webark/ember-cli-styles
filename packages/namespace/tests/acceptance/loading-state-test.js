@@ -13,7 +13,7 @@ module('Acceptance | loading state', function (hooks) {
     await visit('/loading-state/base');
     assert.equal(this.styleFor('h1').color, 'rgb(0, 0, 14)');
 
-    click('a[title=Waiting]');
+    click('a[data-test-waiting]');
     await waitUntil(() => find('h2'));
     assert.equal(this.styleFor('h2').color, 'rgb(1, 0, 13)');
     await settled();

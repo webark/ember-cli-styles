@@ -1,9 +1,8 @@
 import Route from '@ember/routing/route';
 import { later } from '@ember/runloop';
-import RSVP from 'rsvp';
 
-export default Route.extend({
+export default class extends Route {
   model() {
-    return new RSVP.Promise((resolve) => later(resolve, 500));
-  },
-});
+    return new Promise((resolve) => later(resolve, 500));
+  }
+}
