@@ -31,12 +31,15 @@ module.exports = {
     broccoliPlugin: require('broccoli-postcss-single'),
     options: {
       map: true,
-      plugins: [{
-        module: require('postcss-import'),
-      }, {
-        module: require('postcss-preset-env'),
-        options: { stage: 3 },
-      }],
+      plugins: [
+        {
+          module: require('postcss-import'),
+        },
+        {
+          module: require('postcss-preset-env'),
+          options: { stage: 3 },
+        },
+      ],
     },
   },
 };

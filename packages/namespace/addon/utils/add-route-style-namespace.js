@@ -12,6 +12,8 @@ export default function addRouteStyleNamespace(owner, routes) {
   }
 
   if (owner.lookup('controller:application')) {
-    owner.lookup('controller:application').set('routeStyleNamespaceClassSet', classes.join(' '));
+    owner
+      .lookup('controller:application')
+      .set('routeStyleNamespaceClassSet', classes.join(' '));
   }
 }

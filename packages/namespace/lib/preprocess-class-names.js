@@ -1,16 +1,16 @@
 const postcss = require('postcss');
-const postcssSelectorNamespace = require('postcss-selector-namespace')
+const postcssSelectorNamespace = require('postcss-selector-namespace');
 const { EOL } = require('os');
 const supportedExtensions = {
-  ".scss": require('postcss-scss'),
-  ".less": require('postcss-less')
+  '.scss': require('postcss-scss'),
+  '.less': require('postcss-less'),
 };
 
 function namespaceSelectors(className) {
   return postcssSelectorNamespace({
     selfSelector: /&|:--component/,
     namespace: '.' + className,
-    ignoreRoot: false
+    ignoreRoot: false,
   });
 }
 
@@ -33,13 +33,12 @@ module.exports = {
   },
 
   syntax(contents, className, extension) {
-    return postcss().use(namespaceSelectors(className))
-      .process(contents, {
-        syntax: supportedExtensions[extension]
-      }).css;
+    return postcss().use(namespaceSelectors(className)).process(contents, {
+      syntax: supportedExtensions[extension],
+    }).css;
   },
 
   default(contents, className) {
     return postcss().use(namespaceSelectors(className)).process(contents).css;
-  }
+  },
 };

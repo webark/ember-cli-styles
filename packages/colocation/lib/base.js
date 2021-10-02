@@ -26,4 +26,4 @@ module.exports = class Base {
       annotation: 'Funnel (ember-component-css grab files addon style files)',
     });
   }
-}
+};

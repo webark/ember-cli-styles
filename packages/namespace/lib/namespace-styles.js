@@ -6,7 +6,7 @@ const path = require('path');
 module.exports = class NamespaceStyles extends Filter {
   constructor(tree, options = {}) {
     super(tree, {
-      annotation: options.annotation
+      annotation: options.annotation,
     });
 
     this.extensions = options.extensions;
@@ -32,4 +32,4 @@ module.exports = class NamespaceStyles extends Filter {
 
     return processStratagies[strategy](contents, className, extension);
   }
-}
+};

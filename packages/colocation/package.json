@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-styles-colocation",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "The default blueprint for ember-cli addons.",
   "keywords": [
     "ember-addon"
@@ -22,10 +22,13 @@
     "lint:js:fix": "eslint . --fix",
     "start": "ember serve",
     "test": "npm-run-all lint test:*",
-    "test:ember": "ember test",
+    "test:ember": "ember test --test-port=7357",
     "test:ember-compatibility": "ember try:each"
   },
   "dependencies": {
+    "broccoli-file-manifest": "^2.0.3",
+    "broccoli-funnel": "^3.0.8",
+    "broccoli-merge-trees": "^4.2.0",
     "ember-cli-babel": "^7.26.6",
     "ember-cli-htmlbars": "^5.7.1"
   },
@@ -73,6 +76,9 @@
     "edition": "octane"
   },
   "ember-addon": {
+    "before": [
+      "ember-cli-styles-namespace"
+    ],
     "configPath": "tests/dummy/config"
   }
 }

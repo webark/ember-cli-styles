@@ -15,7 +15,8 @@ export default function addComponentStyleNamespace(owner) {
       }
 
       if (!component.classNameBindings.includes('styleNamespace')) {
-        proto.classNameBindings = component.classNameBindings.concat('styleNamespace');
+        proto.classNameBindings =
+          component.classNameBindings.concat('styleNamespace');
       }
     }
   }

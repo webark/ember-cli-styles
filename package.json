@@ -6,6 +6,12 @@
   "author": "Mark David Avery <mark@webark.cc>",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "test": "lerna run test:ember --parallel --since origin/main --",
+    "test:all": "lerna run test:ember --parallel --",
+    "lint": "lerna run lint --since origin/main --",
+    "lint:all": "lerna run lint --"
+  },
   "workspaces": [
     "packages/*"
   ],

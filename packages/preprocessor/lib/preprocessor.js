@@ -27,11 +27,13 @@ module.exports = class Preprocessors {
     const styles = [];
 
     for (const [project, outFile] of Object.entries(options.outputPaths)) {
-      styles.push(this.preprocess({
-        node,
-        outFile,
-        inFile: path.join(inputPath, project),
-      }));
+      styles.push(
+        this.preprocess({
+          node,
+          outFile,
+          inFile: path.join(inputPath, project),
+        })
+      );
     }
 
     return merge(styles);
@@ -42,26 +44,26 @@ module.exports = class Preprocessors {
     return this.concatStyleFiles(merge(preprocessedNodes), outFile);
   }
 
-  preprocessNode(node, inFile, outFile)  {
-    return this.extensions.map(extention => {
-      const {
-        broccoliPlugin,
-        options,
-      } = this.preprocessors[extention];
+  preprocessNode(node, inFile, outFile) {
+    return this.extensions.map((extention) => {
+      const { broccoliPlugin, options } = this.preprocessors[extention];
 
       const fileIn = `${inFile}.${extention}`;
       const fileOut = `${outFile}.${extention}`;
 
       const nodeToPreprocess = this.ensureFile(fileIn, node);
-      return broccoliPlugin([nodeToPreprocess], fileIn, fileOut, options);
+      return new broccoliPlugin([nodeToPreprocess], fileIn, fileOut, options);
     });
   }
 
   ensureFile(fileIn, node) {
-    const newFile = witeFile(fileIn, '/* Empty File. If know how to conditionaly run broccoli plugins, please reach out. Thanks. */');
+    const newFile = witeFile(
+      fileIn,
+      '/* Empty File. If know how to conditionaly run broccoli plugins, please reach out. Thanks. */'
+    );
 
     return merge([newFile, node], {
-      overwrite: true
+      overwrite: true,
     });
   }
 
@@ -71,14 +73,17 @@ module.exports = class Preprocessors {
       inputFiles: [this.styleFiles(outFile)],
       sourceMapConfig: {
         enabled: false,
-        extensions: ['css']
+        extensions: ['css'],
       },
-      allowNone: true
-    })
+      allowNone: true,
+    });
   }
 
   styleFiles(outFile) {
-    return path.join(`${outFile}.{${this.extensions.join(',')},}`)
-      .split(path.sep).filter(Boolean).join(path.sep);
+    return path
+      .join(`${outFile}.{${this.extensions.join(',')},}`)
+      .split(path.sep)
+      .filter(Boolean)
+      .join(path.sep);
   }
-}
+};

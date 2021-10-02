@@ -4,7 +4,9 @@ const manifest = require('broccoli-file-manifest');
 
 const Base = require('./base.js');
 
-module.exports.MoveAddonColocatedStyles = class MoveAddonColocatedStyles extends Base {
+module.exports.MoveAddonColocatedStyles = class MoveAddonColocatedStyles extends (
+  Base
+) {
   constructor(options) {
     super(options);
     this.addonRealDir = options.addonRealDir;
@@ -16,17 +18,17 @@ module.exports.MoveAddonColocatedStyles = class MoveAddonColocatedStyles extends
 
   toTree(tree) {
     const colocatedStyles = this.colocatedStyles(this.addonRealDir, '');
-    
+
     return merge([tree, colocatedStyles], { overwrite: true });
   }
-}
+};
 
 const MANIFEST_TEMPATES = {
   default: '@import "<file-path>";',
   sass: '@import "<file-path>"',
   styl: '@import "<file-path>"',
   css: '@import "../../<file-path>";',
-}
+};
 
 module.exports.ColocateStyles = class ColocateStyles extends Base {
   get name() {
@@ -48,7 +50,7 @@ module.exports.ColocateStyles = class ColocateStyles extends Base {
   toTree(tree, destDir) {
     const colocatedStyles = this.colocatedStyles(tree);
     const manifests = this.generateManifest(colocatedStyles, destDir);
-    
+
     return merge([tree, manifests], { overwrite: true });
   }
-}
+};

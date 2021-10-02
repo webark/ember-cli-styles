@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-styles-preprocessor",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "The default blueprint for ember-cli addons.",
   "keywords": [
     "ember-addon"
@@ -22,12 +22,22 @@
     "lint:js:fix": "eslint . --fix",
     "start": "ember serve",
     "test": "npm-run-all lint test:*",
-    "test:ember": "ember test",
+    "test:ember": "ember test --test-port=7340",
     "test:ember-compatibility": "ember try:each"
   },
   "dependencies": {
+    "broccoli-concat": "^4.2.5",
+    "broccoli-file-creator": "^2.1.1",
+    "broccoli-less-single": "^2.0.1",
+    "broccoli-merge-trees": "^4.2.0",
+    "broccoli-postcss-single": "^5.0.0",
+    "broccoli-sass-source-maps": "^4.0.0",
+    "broccoli-stylus-single": "^1.0.1",
     "ember-cli-babel": "^7.26.6",
-    "ember-cli-htmlbars": "^5.7.1"
+    "ember-cli-htmlbars": "^5.7.1",
+    "postcss-import": "^14.0.2",
+    "postcss-preset-env": "^6.7.0",
+    "sass": "^1.42.1"
   },
   "devDependencies": {
     "@ember/optional-features": "^2.0.0",
