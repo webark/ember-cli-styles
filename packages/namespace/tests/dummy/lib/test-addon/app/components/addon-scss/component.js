@@ -1,1 +1,1 @@
-export { default } from 'test-addon/components/addon-scss/component';
+export { default } from 'test-addon/components/addon-scss';

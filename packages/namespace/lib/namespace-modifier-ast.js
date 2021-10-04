@@ -11,7 +11,7 @@ function getModifiers(moduleName) {
     {
       param: 'argsClass',
       type: 'path',
-      value: 'this.args.styleNamespace',
+      value: '@styleNamespace',
     },
     {
       param: 'runClass',
@@ -34,7 +34,14 @@ function namespaceMofiderAstPlugin({
     name: 'namespace-modifier-ast-plugin',
 
     visitor: {
+      AttrNode(node) {
+        if (node.name !== '@styleNamespace' || node.value.chars) return;
+
+        node.value = builders.text(componentNames.class(moduleName));
+      },
       ElementModifierStatement(node) {
+        if (node.path.original !== 'style-namespace') return;
+
         const allModifiers = getModifiers(moduleName);
         const neededModifiers = allModifiers.filter(
           (modifier) =>

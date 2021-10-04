@@ -1,3 +1,5 @@
-{{#each this.items as |item|}}
-  <span class="{{this.styleNamespace}}__element--{{item}}"></span>
-{{/each}}
+<div {{style-namespace}}>
+  {{#each this.items as |item|}}
+    <span {{style-namespace '__element--' item}}></span>
+  {{/each}}
+</div>
