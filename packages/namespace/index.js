@@ -5,7 +5,7 @@ const {
   ColocatedNamespaceObjects,
 } = require('./lib/namespace.js');
 
-const { NamespaceModifierAst } = require('./lib/namespace-modifier-ast');
+const { NamespaceHelperAst } = require('./lib/namespace-helper-ast');
 
 module.exports = {
   _defaultOptions(registry) {
@@ -36,7 +36,7 @@ module.exports = {
     registry.add('css', new NamespaceStyles(options));
     registry.add('js', new ColocatedNamespaceObjects(options));
 
-    registry.add('htmlbars-ast-plugin', new NamespaceModifierAst());
+    registry.add('htmlbars-ast-plugin', new NamespaceHelperAst());
   },
 
   name: require('./package').name,

@@ -1,7 +1,7 @@
 const path = require('path');
 const componentNames = require('./component-names.js');
 
-function getModifiers(moduleName) {
+function getArguments(moduleName) {
   return [
     {
       param: 'buildClass',
@@ -21,7 +21,7 @@ function getModifiers(moduleName) {
   ];
 }
 
-function addModifier(builders) {
+function addArguments(builders) {
   return ({ param, type, value }) =>
     builders.pair(param, builders[type](value));
 }
@@ -29,20 +29,20 @@ function addModifier(builders) {
 function addNamespaceArguments(node, moduleName, builders) {
   if (node.path.original !== 'style-namespace') return;
 
-  const allModifiers = getModifiers(moduleName);
-  const neededModifiers = allModifiers.filter(
-    (modifier) => !node.hash.pairs.find((pair) => pair.key === modifier.param)
+  const allArguments = getArguments(moduleName);
+  const neededArguments = allArguments.filter(
+    (argument) => !node.hash.pairs.find((pair) => pair.key === argument.param)
   );
 
-  node.hash.pairs.push(...neededModifiers.map(addModifier(builders)));
+  node.hash.pairs.push(...neededArguments.map(addArguments(builders)));
 }
 
-function namespaceMofiderAstPlugin({
+function namespaceHelperAstPlugin({
   syntax: { builders },
   meta: { moduleName } = {},
 }) {
   return {
-    name: 'namespace-modifier-ast-plugin',
+    name: 'namespace-helper-ast-plugin',
 
     visitor: {
       SubExpression(node) {
@@ -55,13 +55,13 @@ function namespaceMofiderAstPlugin({
   };
 }
 
-module.exports.NamespaceModifierAst = class NamespaceModifierAst {
+module.exports.NamespaceHelperAst = class NamespaceHelperAst {
   get name() {
-    return 'namespace-modifier';
+    return 'namespace-helper';
   }
 
   plugin() {
-    return namespaceMofiderAstPlugin(...arguments);
+    return namespaceHelperAstPlugin(...arguments);
   }
 
   baseDir() {
@@ -69,8 +69,8 @@ module.exports.NamespaceModifierAst = class NamespaceModifierAst {
   }
 
   cacheKey() {
-    return getModifiers('cache-key')
-      .map((modifier) => modifier.value)
+    return getArguments('cache-key')
+      .map((argument) => argument.value)
       .join('');
   }
 };
