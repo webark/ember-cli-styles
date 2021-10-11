@@ -16,14 +16,16 @@ module.exports = class Base {
       srcDir,
       destDir,
       allowEmpty: true,
-      annotation: 'Funnel (ember-component-css grab files addon style files)',
+      annotation:
+        'Funnel (ember-cli-styles-colocation grab files addon style files)',
     });
 
     return funnel(baseFiles, {
       include: [`**/*.{${this.extentions},}`],
       exclude: [`**/styles/**/*`],
       allowEmpty: true,
-      annotation: 'Funnel (ember-component-css grab files addon style files)',
+      annotation:
+        'Funnel (ember-cli-styles-colocation grab files addon style files)',
     });
   }
 };

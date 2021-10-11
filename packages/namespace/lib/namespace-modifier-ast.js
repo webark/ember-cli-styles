@@ -26,6 +26,17 @@ function addModifier(builders) {
     builders.pair(param, builders[type](value));
 }
 
+function addNamespaceArguments(node, moduleName, builders) {
+  if (node.path.original !== 'style-namespace') return;
+
+  const allModifiers = getModifiers(moduleName);
+  const neededModifiers = allModifiers.filter(
+    (modifier) => !node.hash.pairs.find((pair) => pair.key === modifier.param)
+  );
+
+  node.hash.pairs.push(...neededModifiers.map(addModifier(builders)));
+}
+
 function namespaceMofiderAstPlugin({
   syntax: { builders },
   meta: { moduleName } = {},
@@ -34,26 +45,15 @@ function namespaceMofiderAstPlugin({
     name: 'namespace-modifier-ast-plugin',
 
     visitor: {
-      AttrNode(node) {
-        if (node.name !== '@styleNamespace' || node.value.chars) return;
-
-        node.value = builders.text(componentNames.class(moduleName));
+      SubExpression(node) {
+        addNamespaceArguments(node, moduleName, builders);
       },
-      ElementModifierStatement(node) {
-        if (node.path.original !== 'style-namespace') return;
-
-        const allModifiers = getModifiers(moduleName);
-        const neededModifiers = allModifiers.filter(
-          (modifier) =>
-            !node.hash.pairs.find((pair) => pair.key === modifier.param)
-        );
-        node.hash.pairs.push(...neededModifiers.map(addModifier(builders)));
+      MustacheStatement(node) {
+        addNamespaceArguments(node, moduleName, builders);
       },
     },
   };
 }
-
-module.exports.namespaceMofiderAstPlugin = namespaceMofiderAstPlugin;
 
 module.exports.NamespaceModifierAst = class NamespaceModifierAst {
   get name() {
@@ -66,5 +66,11 @@ module.exports.NamespaceModifierAst = class NamespaceModifierAst {
 
   baseDir() {
     return path.join('..', __dirname);
+  }
+
+  cacheKey() {
+    return getModifiers('cache-key')
+      .map((modifier) => modifier.value)
+      .join('');
   }
 };

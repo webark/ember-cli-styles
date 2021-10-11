@@ -4,9 +4,7 @@ const manifest = require('broccoli-file-manifest');
 
 const Base = require('./base.js');
 
-module.exports.MoveAddonColocatedStyles = class MoveAddonColocatedStyles extends (
-  Base
-) {
+module.exports.MoveColocatedStyles = class MoveColocatedStyles extends Base {
   constructor(options) {
     super(options);
     this.addonRealDir = options.addonRealDir;

@@ -15,7 +15,7 @@ module.exports.NamespaceStyles = class NamespaceStyles extends Base {
       extensions: this.extentions,
       terseClassNames: this.terseClassNames,
       annotation:
-        'Filter (ember-component-css process root & or :--component with class name)',
+        'Filter (ember-cli-styles-namespace process root & or :--component with class name)',
     });
   }
 
