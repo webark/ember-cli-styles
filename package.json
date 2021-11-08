@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-styles",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha.0",
   "main": "index.js",
   "repository": "git@github.com:webark/ember-cli-styles.git",
   "author": "Mark David Avery <mark@webark.cc>",
