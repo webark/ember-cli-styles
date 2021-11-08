@@ -5829,6 +5829,38 @@ ember-cli-string-utils@^1.1.0:
   resolved "https://registry.yarnpkg.com/ember-cli-string-utils/-/ember-cli-string-utils-1.1.0.tgz#39b677fc2805f55173735376fcef278eaa4452a1"
   integrity sha1-ObZ3/CgF9VFzc1N2/O8njqpEUqE=
 
+"ember-cli-styles-namespace@link:packages/namespace":
+  version "1.0.0-alpha.3"
+  dependencies:
+    broccoli-merge-trees "^4.2.0"
+    broccoli-persistent-filter "^3.1.2"
+    broccoli-tree-walker "^1.0.1"
+    ember-cli-babel "^7.26.6"
+    ember-cli-htmlbars "^6.0.0"
+    ember-cli-styles-colocation "^1.0.0-alpha.1"
+    fs-extra "^10.0.0"
+    md5 "^2.3.0"
+    postcss "^8.3.8"
+    postcss-less "^5.0.0"
+    postcss-scss "^4.0.1"
+    postcss-selector-namespace "^3.0.1"
+
+"ember-cli-styles-preprocessor@link:packages/preprocessor":
+  version "1.0.0-alpha.1"
+  dependencies:
+    broccoli-concat "^4.2.5"
+    broccoli-file-creator "^2.1.1"
+    broccoli-less-single "^2.0.1"
+    broccoli-merge-trees "^4.2.0"
+    broccoli-postcss-single "^5.0.0"
+    broccoli-sass-source-maps "^4.0.0"
+    broccoli-stylus-single "^1.0.1"
+    ember-cli-babel "^7.26.6"
+    ember-cli-htmlbars "^6.0.0"
+    postcss-import "^14.0.2"
+    postcss-preset-env "^6.7.0"
+    sass "^1.42.1"
+
 ember-cli-terser@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/ember-cli-terser/-/ember-cli-terser-4.0.2.tgz#c436a9e4159f76a615b051cba0584844652b7dcd"
@@ -12142,10 +12174,6 @@ schema-utils@^3.0.0, schema-utils@^3.1.0, schema-utils@^3.1.1:
     ajv "^6.12.5"
     ajv-keywords "^3.5.2"
 
-"second-test-addon@link:./packages/namespace/tests/dummy/lib/second-test-addon":
-  version "0.0.0"
-  uid ""
-
 "semver@2 || 3 || 4 || 5", semver@^5.3.0, semver@^5.4.1, semver@^5.5.0, semver@^5.6.0, semver@^5.7.1:
   version "5.7.1"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.7.1.tgz#a954f931aeba508d307bbf069eff0c01c96116f7"
@@ -13097,10 +13125,6 @@ terser@^5.3.0, terser@^5.7.2:
     commander "^2.20.0"
     source-map "~0.7.2"
     source-map-support "~0.5.20"
-
-"test-addon@link:./packages/namespace/tests/dummy/lib/test-addon":
-  version "0.0.0"
-  uid ""
 
 testem@^3.2.0:
   version "3.6.0"

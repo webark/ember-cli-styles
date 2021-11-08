@@ -4,14 +4,10 @@
   "dependencies": {
     "ember-cli-babel": "*",
     "ember-cli-htmlbars": "*",
-    "ember-cli-styles-preprocessor": "*"
+    "ember-cli-styles-namespace": "link:../../../../../namespace",
+    "ember-cli-styles-preprocessor": "link:../../../../../preprocessor"
   },
   "keywords": [
     "ember-addon"
-  ],
-  "ember-addon": {
-    "paths": [
-      "../../../.."
-    ]
-  }
+  ]
 }
