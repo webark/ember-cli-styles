@@ -15,7 +15,7 @@ module(`Acceptance | ${TYPE}`, function (hooks) {
 
     const element = find('[class$=__element--variant]');
     element.classList.add('mixin-extra');
-    assert.equal(window.getComputedStyle(element).color, 'rgb(0, 0, 6)');
+    assert.strictEqual(window.getComputedStyle(element).color, 'rgb(0, 0, 6)');
   });
 
   // eslint-disable-next-line qunit/require-expect
@@ -24,7 +24,7 @@ module(`Acceptance | ${TYPE}`, function (hooks) {
 
     for (const index of Array(10).keys()) {
       const color = this.styleFor(`[class$=__element--${index}]`).color;
-      assert.equal(color, `rgb(0, 0, ${index})`);
+      assert.strictEqual(color, `rgb(0, 0, ${index})`);
     }
   });
 });

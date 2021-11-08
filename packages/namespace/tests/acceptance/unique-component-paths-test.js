@@ -11,6 +11,6 @@ module(`Acceptance | Unique Paths`, function (hooks) {
   test('base rule followed', async function (assert) {
     await visit(`/unique-component-paths`);
 
-    assert.equal(this.styleFor('h1').color, 'rgb(0, 0, 14)');
+    assert.strictEqual(this.styleFor('h1').color, 'rgb(0, 0, 14)');
   });
 });

@@ -15,6 +15,6 @@ module(`Acceptance | ${TYPE}`, function (hooks) {
 
     const element = find('[class$=__element--variant]');
     element.classList.add('mixin-extra');
-    assert.equal(window.getComputedStyle(element).color, 'rgb(0, 0, 6)');
+    assert.strictEqual(window.getComputedStyle(element).color, 'rgb(0, 0, 6)');
   });
 });

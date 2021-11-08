@@ -12,13 +12,13 @@ module.skip('Acceptance | classic structure', function (hooks) {
     await visit('/classic-structure');
 
     const color = this.styleFor('.classic-structure').color;
-    assert.equal(color, 'rgb(0, 0, 1)');
+    assert.strictEqual(color, 'rgb(0, 0, 1)');
   });
 
   test('should be able to use classic structure style nested', async function (assert) {
     await visit('/classic-structure-nested');
 
     const color = this.styleFor('.classic-structure-nested').color;
-    assert.equal(color, 'rgb(0, 0, 1)');
+    assert.strictEqual(color, 'rgb(0, 0, 1)');
   });
 });

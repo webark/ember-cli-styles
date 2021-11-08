@@ -11,13 +11,13 @@ module('Acceptance | loading state', function (hooks) {
   // eslint-disable-next-line qunit/require-expect
   test('loading state is styled', async function (assert) {
     await visit('/loading-state/base');
-    assert.equal(this.styleFor('h1').color, 'rgb(0, 0, 14)');
+    assert.strictEqual(this.styleFor('h1').color, 'rgb(0, 0, 14)');
 
     click('a[data-test-waiting]');
     await waitUntil(() => find('h2'));
-    assert.equal(this.styleFor('h2').color, 'rgb(1, 0, 13)');
+    assert.strictEqual(this.styleFor('h2').color, 'rgb(1, 0, 13)');
     await settled();
 
-    assert.equal(this.styleFor('h3').color, 'rgb(0, 0, 13)');
+    assert.strictEqual(this.styleFor('h3').color, 'rgb(0, 0, 13)');
   });
 });

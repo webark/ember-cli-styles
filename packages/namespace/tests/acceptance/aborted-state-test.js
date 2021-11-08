@@ -11,7 +11,10 @@ module('Acceptance | aborted state', function (hooks) {
   test('should still render for aborted stte', async function (assert) {
     await visit('/css/aborted-state');
 
-    assert.equal(currentURL(), '/css/nested');
-    assert.equal(this.styleFor('[class$=__nested]').color, 'rgb(0, 2, 0)');
+    assert.strictEqual(currentURL(), '/css/nested');
+    assert.strictEqual(
+      this.styleFor('[class$=__nested]').color,
+      'rgb(0, 2, 0)'
+    );
   });
 });

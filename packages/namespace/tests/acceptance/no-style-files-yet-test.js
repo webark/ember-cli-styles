@@ -11,6 +11,6 @@ module('Acceptance | no style files yet', function (hooks) {
   test('should not have to include a style file inorder to build and render', async function (assert) {
     await visit('/no-style-files-yet');
 
-    assert.equal(this.styleFor('.base').color, 'rgb(0, 0, 0)');
+    assert.strictEqual(this.styleFor('.base').color, 'rgb(0, 0, 0)');
   });
 });

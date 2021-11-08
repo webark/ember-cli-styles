@@ -10,7 +10,7 @@ module('Acceptance | error state', function (hooks) {
 
   test('handled error state does not throw', async function (assert) {
     await visit('/error-state/handled');
-    assert.equal(currentURL(), '/error-state');
-    assert.equal(this.styleFor('h1').color, 'rgb(0, 0, 14)');
+    assert.strictEqual(currentURL(), '/error-state');
+    assert.strictEqual(this.styleFor('h1').color, 'rgb(0, 0, 14)');
   });
 });

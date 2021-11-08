@@ -6,13 +6,13 @@ export default function (type) {
     await visit(`/${type}`);
 
     const color = this.styleFor('[class$=__element]').color;
-    assert.equal(color, 'rgb(0, 0, 4)');
+    assert.strictEqual(color, 'rgb(0, 0, 4)');
   });
 
   test('BEM variant rule followed', async function (assert) {
     await visit(`/${type}`);
 
     const color = this.styleFor('[class$=__element--variant]').color;
-    assert.equal(color, 'rgb(0, 0, 5)');
+    assert.strictEqual(color, 'rgb(0, 0, 5)');
   });
 }
