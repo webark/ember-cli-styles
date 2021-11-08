@@ -1,5 +1,5 @@
 {
-  "name": "ember-cli-styles-legacy",
+  "name": "ember-cli-styles-component-css-support",
   "version": "1.0.0-alpha.1",
   "description": "The default blueprint for ember-cli addons.",
   "keywords": [
@@ -8,7 +8,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/webark/ember-cli-styles.git",
-    "directory": "packages/legacy"
+    "directory": "packages/component-css-support"
   },
   "license": "MIT",
   "author": "",
