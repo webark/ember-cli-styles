@@ -5829,6 +5829,15 @@ ember-cli-string-utils@^1.1.0:
   resolved "https://registry.yarnpkg.com/ember-cli-string-utils/-/ember-cli-string-utils-1.1.0.tgz#39b677fc2805f55173735376fcef278eaa4452a1"
   integrity sha1-ObZ3/CgF9VFzc1N2/O8njqpEUqE=
 
+"ember-cli-styles-colocation@link:packages/colocation":
+  version "1.0.0-alpha.1"
+  dependencies:
+    broccoli-file-manifest "^2.0.3"
+    broccoli-funnel "^3.0.8"
+    broccoli-merge-trees "^4.2.0"
+    ember-cli-babel "^7.26.6"
+    ember-cli-htmlbars "^6.0.0"
+
 "ember-cli-styles-namespace@link:packages/namespace":
   version "1.0.0-alpha.3"
   dependencies:
@@ -5846,7 +5855,7 @@ ember-cli-string-utils@^1.1.0:
     postcss-selector-namespace "^3.0.1"
 
 "ember-cli-styles-preprocessor@link:packages/preprocessor":
-  version "1.0.0-alpha.1"
+  version "1.0.0-alpha.2"
   dependencies:
     broccoli-concat "^4.2.5"
     broccoli-file-creator "^2.1.1"
@@ -12174,6 +12183,10 @@ schema-utils@^3.0.0, schema-utils@^3.1.0, schema-utils@^3.1.1:
     ajv "^6.12.5"
     ajv-keywords "^3.5.2"
 
+"second-test-addon@link:./packages/namespace/tests/dummy/lib/second-test-addon":
+  version "0.0.0"
+  uid ""
+
 "semver@2 || 3 || 4 || 5", semver@^5.3.0, semver@^5.4.1, semver@^5.5.0, semver@^5.6.0, semver@^5.7.1:
   version "5.7.1"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.7.1.tgz#a954f931aeba508d307bbf069eff0c01c96116f7"
@@ -13125,6 +13138,10 @@ terser@^5.3.0, terser@^5.7.2:
     commander "^2.20.0"
     source-map "~0.7.2"
     source-map-support "~0.5.20"
+
+"test-addon@link:./packages/namespace/tests/dummy/lib/test-addon":
+  version "0.0.0"
+  uid ""
 
 testem@^3.2.0:
   version "3.6.0"
