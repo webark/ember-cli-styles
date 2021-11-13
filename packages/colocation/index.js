@@ -11,9 +11,9 @@ module.exports = {
     };
   },
 
-  _overrideOptions({ options = {} }) {
+  _overrideOptions({ app: { options = {} } }) {
     return {
-      ...options.emberCliStyleOptions,
+      ...options.emberCliStylesOptions,
     };
   },
 

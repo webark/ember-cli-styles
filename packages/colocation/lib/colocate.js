@@ -29,6 +29,15 @@ const MANIFEST_TEMPATES = {
 };
 
 module.exports.ColocateStyles = class ColocateStyles extends Base {
+  constructor(options) {
+    super(options);
+    this.manifestTemplates = Object.assign(
+      {},
+      MANIFEST_TEMPATES,
+      options.manifestTemplates
+    );
+  }
+
   get name() {
     return 'colocate-styles';
   }
@@ -36,7 +45,7 @@ module.exports.ColocateStyles = class ColocateStyles extends Base {
   generateManifest(tree, destDir) {
     const manifesto = manifest(tree, {
       outputFileNameWithoutExtension: 'ember-styles',
-      templates: MANIFEST_TEMPATES,
+      templates: this.manifestTemplates,
       annotation: 'Manifest (ember-component-css style file manifest)',
     });
 

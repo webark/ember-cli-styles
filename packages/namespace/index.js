@@ -16,10 +16,10 @@ module.exports = {
     };
   },
 
-  _overrideOptions({ options = {} }) {
+  _overrideOptions({ app: { options = {} } }) {
     return {
       terseClassNames: options.enviroment,
-      ...options.emberCliStyleOptions,
+      ...options.emberCliStylesOptions,
     };
   },
 
