@@ -1,7 +1,9 @@
 import addRouteStyleNamespace from 'ember-cli-styles-namespace/utils/add-route-style-namespace';
-import addComponentStyleNamespace from 'ember-cli-styles-namespace/utils/add-component-style-namespace';
+import processStyleType from 'ember-cli-styles-namespace/utils/process-style-type';
 
 export function initialize(appInstance) {
+  processStyleType(appInstance);
+
   let router = appInstance.lookup('service:router');
   router.on('routeDidChange', function ({ to }) {
     if (likeRouteInfo(to)) {
@@ -20,8 +22,6 @@ export function initialize(appInstance) {
       }
     }
   });
-
-  addComponentStyleNamespace(appInstance);
 }
 
 function nestedRouteNames({ name, parent }, routeNames = []) {

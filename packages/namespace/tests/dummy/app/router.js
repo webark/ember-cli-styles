@@ -49,5 +49,7 @@ Router.map(function () {
     this.route('handled');
   });
 
+  this.route('with-component-file');
+
   this.route('aborted-state');
 });

@@ -7,7 +7,7 @@ module.exports = {
     return {
       baseName: registry.app.name,
       getCssExtentions: registry.extensionsForType.bind(registry, 'css'),
-      forceMoveColocatedStyles: this.isAddon() || false,
+      forceMoveColocatedStyles: this.isAddon(),
     };
   },
 

@@ -11,7 +11,7 @@ module.exports = class StyleInfo extends Walker {
   }
 
   fileContents(styleNamespace) {
-    return `export default { styleNamespace: "${styleNamespace}" }`;
+    return `export const styleNamespace = "${styleNamespace}"`;
   }
 
   fullStylePath(stylePath) {
