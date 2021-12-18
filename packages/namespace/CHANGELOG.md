@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.6](https://github.com/webark/ember-cli-styles/compare/ember-cli-styles-namespace@1.0.0-alpha.5...ember-cli-styles-namespace@1.0.0-alpha.6) (2021-12-18)
+
+
+### Features
+
+* removed auto component namespaceing ([15951b7](https://github.com/webark/ember-cli-styles/commit/15951b722a9fbab8973c4ee672e6f4540e5669ee))
+
+
+
+
+
 # [1.0.0-alpha.5](https://github.com/webark/ember-cli-styles/compare/ember-cli-styles-namespace@1.0.0-alpha.4...ember-cli-styles-namespace@1.0.0-alpha.5) (2021-11-13)
 
 
