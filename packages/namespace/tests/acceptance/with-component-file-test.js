@@ -13,7 +13,7 @@ module('Acceptance | with component file', function (hooks) {
 
     assert.strictEqual(
       this.styleFor(`h3:first-of-type`).color,
-      'rgb(255, 0, 1)'
+      'rgb(255, 0, 0)'
     );
   });
 
@@ -22,7 +22,7 @@ module('Acceptance | with component file', function (hooks) {
 
     assert.strictEqual(
       this.styleFor(`h3:last-of-type`).color,
-      'rgb(255, 0, 1)'
+      'rgb(255, 0, 0)'
     );
   });
 });
