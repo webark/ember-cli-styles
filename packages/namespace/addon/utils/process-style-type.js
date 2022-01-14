@@ -1,19 +1,19 @@
-const STYLE_EXETNSTIONS = ['css', 'less', 'scss', 'sass', 'styl'];
+const STYLE_EXTENSIONS = ['css', 'less', 'scss', 'sass', 'styl'];
 
 // eslint-disable-next-line no-useless-escape
-const EXTENTION_REGEX = `\.(${STYLE_EXETNSTIONS.join('|')})$`;
+const EXTENSION_REGEX = `\.(${STYLE_EXTENSIONS.join('|')})$`;
 
 function formatFullName(stylePath) {
   return stylePath
-    .replace(new RegExp(`(/(styles?|index))?${EXTENTION_REGEX}`), '')
+    .replace(new RegExp(`(/(styles?|index))?${EXTENSION_REGEX}`), '')
     .replace(/.*?\//, '')
     .replace(/^components\//, '');
 }
 
 export default function addComponentStyleNamespace(owner) {
-  const styleFileExtentionRegEx = new RegExp(EXTENTION_REGEX);
+  const styleFileExtentionRegEx = new RegExp(EXTENSION_REGEX);
 
-  return STYLE_EXETNSTIONS.reduce(function (allStyles, extention) {
+  return STYLE_EXTENSIONS.reduce(function (allStyles, extention) {
     return allStyles.concat(
       owner
         .lookup('container-debug-adapter:main')
