@@ -10,7 +10,7 @@ function formatFullName(stylePath) {
     .replace(/^components\//, '');
 }
 
-export default function addComponentStyleNamespace(owner) {
+export default function processStyleType(owner) {
   const styleFileExtentionRegEx = new RegExp(EXTENTION_REGEX);
 
   return STYLE_EXETNSTIONS.reduce(function (allStyles, extention) {
