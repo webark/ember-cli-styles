@@ -32,6 +32,7 @@ Router.map(function () {
   this.route('no-style-files-yet');
   this.route('classic-structure');
   this.route('classic-structure-nested');
+  this.route('explicit-style-namespace-path');
   this.route('unique-component-paths');
   this.route('query-params');
 
