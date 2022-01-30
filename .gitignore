@@ -2,3 +2,12 @@
 
 # dependencies
 node_modules/
+
+# yarn stable
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
