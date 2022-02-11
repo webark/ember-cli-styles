@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.4](https://github.com/webark/ember-cli-styles/compare/ember-cli-styles-colocation@1.0.0-alpha.3...ember-cli-styles-colocation@1.0.0-alpha.4) (2022-02-11)
+
+**Note:** Version bump only for package ember-cli-styles-colocation
+
+
+
+
+
 # [1.0.0-alpha.3](https://github.com/webark/ember-cli-styles/compare/ember-cli-styles-colocation@1.0.0-alpha.2...ember-cli-styles-colocation@1.0.0-alpha.3) (2021-12-18)
 
 
