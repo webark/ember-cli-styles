@@ -12,6 +12,9 @@
     "lint": "lerna run lint --since origin/main --",
     "lint:all": "lerna run lint --"
   },
+  "resolutions": {
+    "ember-auto-import": "^2.4.0"
+  },
   "workspaces": [
     "packages/*"
   ],
