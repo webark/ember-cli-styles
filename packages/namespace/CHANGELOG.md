@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.7](https://github.com/webark/ember-cli-styles/compare/ember-cli-styles-namespace@1.0.0-alpha.6...ember-cli-styles-namespace@1.0.0-alpha.7) (2022-02-11)
+
+
+### Features
+
+* **namespace:** add support for "manually" getting a component's style-namespace; fixes [#5](https://github.com/webark/ember-cli-styles/issues/5) ([0a9f129](https://github.com/webark/ember-cli-styles/commit/0a9f12927c41a2c2013420cbd362aec4a1508a53))
+
+
+
+
+
 # [1.0.0-alpha.6](https://github.com/webark/ember-cli-styles/compare/ember-cli-styles-namespace@1.0.0-alpha.5...ember-cli-styles-namespace@1.0.0-alpha.6) (2021-12-18)
 
 
