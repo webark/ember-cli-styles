@@ -7776,7 +7776,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ember-cli-styles-colocation@^1.0.0-alpha.3, ember-cli-styles-colocation@workspace:packages/colocation":
+"ember-cli-styles-colocation@^1.0.0-alpha.4, ember-cli-styles-colocation@workspace:packages/colocation":
   version: 0.0.0-use.local
   resolution: "ember-cli-styles-colocation@workspace:packages/colocation"
   dependencies:
@@ -7888,8 +7888,8 @@ __metadata:
     ember-cli-htmlbars: ^6.0.1
     ember-cli-inject-live-reload: ^2.1.0
     ember-cli-sri: ^2.1.1
-    ember-cli-styles-colocation: ^1.0.0-alpha.3
-    ember-cli-styles-preprocessor: ^1.0.0-alpha.3
+    ember-cli-styles-colocation: ^1.0.0-alpha.4
+    ember-cli-styles-preprocessor: ^1.0.0-alpha.4
     ember-cli-terser: ^4.0.2
     ember-disable-prototype-extensions: ^1.1.3
     ember-export-application-global: ^2.0.1
@@ -7926,7 +7926,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"ember-cli-styles-preprocessor@^1.0.0-alpha.3, ember-cli-styles-preprocessor@workspace:packages/preprocessor":
+"ember-cli-styles-preprocessor@^1.0.0-alpha.4, ember-cli-styles-preprocessor@workspace:packages/preprocessor":
   version: 0.0.0-use.local
   resolution: "ember-cli-styles-preprocessor@workspace:packages/preprocessor"
   dependencies:
