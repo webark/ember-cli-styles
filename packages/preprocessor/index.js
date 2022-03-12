@@ -1,7 +1,6 @@
 'use strict';
 
 const Preprocessor = require('./lib/preprocessor');
-const PREPROCESSORS = require('./lib/preprocessors');
 
 module.exports = {
   _defaultOptions() {
@@ -25,7 +24,6 @@ module.exports = {
     const options = this._options(registry);
     const preprocessors = Object.assign(
       {},
-      PREPROCESSORS,
       options.preprocessors
     );
     registry.add('css', new Preprocessor(preprocessors));

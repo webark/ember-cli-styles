@@ -9,8 +9,8 @@
   "scripts": {
     "test": "lerna run test:ember --parallel --since origin/main --",
     "test:all": "lerna run test:ember --parallel --",
-    "lint": "lerna run lint --since origin/main --",
-    "lint:all": "lerna run lint --"
+    "lint": "lerna run lint:js --since origin/main --",
+    "lint:all": "lerna run lint:js --"
   },
   "resolutions": {
     "ember-auto-import": "^2.4.0"
