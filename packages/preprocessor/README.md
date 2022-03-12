@@ -1,15 +1,15 @@
 ember-cli-styles-preprocessor
 ==============================================================================
 
-[Short description of the addon.]
+Allows for one or many style preprocessors to be used for a given addon or app.
 
 
 Compatibility
 ------------------------------------------------------------------------------
 
-* Ember.js v3.20 or above
-* Ember CLI v3.20 or above
-* Node.js v12 or above
+* Ember.js v4.0 or above
+* Ember CLI v4.0 or above
+* Node.js v16 or above
 
 
 Installation
@@ -23,7 +23,55 @@ ember install ember-cli-styles-preprocessor
 Usage
 ------------------------------------------------------------------------------
 
-[Longer description of how to use the addon in apps.]
+In order to preprocess styles, you must define them manually.
+This can be done either in the `ember-cli-build.js` file of an app as,
+
+```javascript
+const preprocessors = {
+  scss: {
+    broccoliPlugin: require('broccoli-sass-source-maps')(require('sass')),
+    options: {
+      sourceMap: true,
+      sourceMapEmbed: true,
+    },
+  },
+};
+
+let app = new EmberApp(defaults, {
+  ...
+  emberCliStylesOptions: {
+    preprocessors,
+  },
+  ...
+});
+```
+
+or in the index.js of an addon like
+
+```javascript
+const preprocessors = {
+  scss: {
+    broccoliPlugin: require('broccoli-sass-source-maps')(require('sass')),
+    options: {
+      sourceMap: true,
+      sourceMapEmbed: true,
+    },
+  },
+};
+
+module.exports = {
+  ...
+  options: {
+    ...
+    emberCliStylesOptions: {
+      preprocessors,
+    },
+    ...
+  },
+  ...
+};
+
+```
 
 
 Contributing
