@@ -80,6 +80,15 @@
     "qunit-dom": "^2.0.0",
     "sass": "^1.49.7"
   },
+  "optionalDependencies": {
+    "broccoli-less-single": ">= 2.0.1",
+    "broccoli-postcss-single": ">= 5.0.1",
+    "broccoli-sass-source-maps": ">= 4.0.0",
+    "broccoli-stylus-single": ">= 1.0.1",
+    "postcss-import": ">= 14.0.2",
+    "postcss-preset-env": ">= 7.4.2",
+    "sass": ">= 1.49.9"
+  },
   "engines": {
     "node": "12.* || 14.* || >= 16"
   },
