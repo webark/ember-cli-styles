@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.8](https://github.com/webark/ember-cli-styles/compare/ember-cli-styles-namespace@1.0.0-alpha.6...ember-cli-styles-namespace@1.0.0-alpha.8) (2022-04-04)
+
+
+### Bug Fixes
+
+* **preprocessor:** added in option dependencies for preprocessors ([5aea8fb](https://github.com/webark/ember-cli-styles/commit/5aea8fb59f9dac22e4aa3dddcb48e72c2f235933))
+
+
+### Features
+
+* **namespace:** add support for "manually" getting a component's style-namespace; fixes [#5](https://github.com/webark/ember-cli-styles/issues/5) ([0a9f129](https://github.com/webark/ember-cli-styles/commit/0a9f12927c41a2c2013420cbd362aec4a1508a53))
+* **preprocessor:** updated preprocessor to not include any by default. They must be manually added fixes [#8](https://github.com/webark/ember-cli-styles/issues/8) ([9d4edb8](https://github.com/webark/ember-cli-styles/commit/9d4edb89bdf8e66ce49f32920eded8d971cdab8d))
+
+
+
+
+
 # [1.0.0-alpha.7](https://github.com/webark/ember-cli-styles/compare/ember-cli-styles-namespace@1.0.0-alpha.6...ember-cli-styles-namespace@1.0.0-alpha.7) (2022-02-11)
 
 ### Features
