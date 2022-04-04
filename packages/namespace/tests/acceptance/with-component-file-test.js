@@ -11,18 +11,12 @@ module('Acceptance | with component file', function (hooks) {
   test('should be able import styleNamespace in a glimmer component', async function (assert) {
     await visit('/with-component-file');
 
-    assert.strictEqual(
-      this.styleFor(`h3:first-of-type`).color,
-      'rgb(255, 0, 0)'
-    );
+    assert.strictEqual(this.styleFor(`h3:first-of-type`).color, 'rgb(255, 0, 0)');
   });
 
   test('should be able import styleNamespace in a classic component', async function (assert) {
     await visit('/with-component-file');
 
-    assert.strictEqual(
-      this.styleFor(`h3:last-of-type`).color,
-      'rgb(255, 0, 0)'
-    );
+    assert.strictEqual(this.styleFor(`h3:last-of-type`).color, 'rgb(255, 0, 0)');
   });
 });

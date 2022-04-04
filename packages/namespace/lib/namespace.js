@@ -5,7 +5,14 @@ const Base = require('ember-cli-styles-colocation/lib/base.js');
 const BroccoliNamespaceStyles = require('./namespace-styles.js');
 const StyleInfo = require('./style-info.js');
 
-module.exports.NamespaceStyles = class NamespaceStyles extends Base {
+class NamespaceBase extends Base {
+  constructor(options) {
+    super(options);
+    this.terseClassNames = options.terseClassNames;
+  }
+}
+
+module.exports.NamespaceStyles = class NamespaceStyles extends NamespaceBase {
   get name() {
     return 'namespace-styles';
   }
@@ -14,8 +21,7 @@ module.exports.NamespaceStyles = class NamespaceStyles extends Base {
     return new BroccoliNamespaceStyles(tree, {
       extensions: this.extentions,
       terseClassNames: this.terseClassNames,
-      annotation:
-        'Filter (ember-cli-styles-namespace process root & or :--component with class name)',
+      annotation: 'Filter (ember-cli-styles-namespace process root & or :--component with class name)',
     });
   }
 
@@ -27,9 +33,7 @@ module.exports.NamespaceStyles = class NamespaceStyles extends Base {
   }
 };
 
-module.exports.ColocatedNamespaceObjects = class ColocatedNamespaceObjects extends (
-  Base
-) {
+module.exports.ColocatedNamespaceObjects = class ColocatedNamespaceObjects extends NamespaceBase {
   get name() {
     return 'colocate-and-namespace-styles-in-js';
   }

@@ -11,9 +11,6 @@ module('Acceptance | template style only', function (hooks) {
   test('should be able to use a pod style with only the style file and a template', async function (assert) {
     await visit('/template-style-only');
 
-    assert.strictEqual(
-      this.styleFor(`[class$=__template-only]`).color,
-      'rgb(0, 0, 1)'
-    );
+    assert.strictEqual(this.styleFor(`[class$=__template-only]`).color, 'rgb(0, 0, 1)');
   });
 });

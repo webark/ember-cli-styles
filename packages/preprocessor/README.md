@@ -1,27 +1,20 @@
-ember-cli-styles-preprocessor
-==============================================================================
+# ember-cli-styles-preprocessor
 
 Allows for one or many style preprocessors to be used for a given addon or app.
 
+## Compatibility
 
-Compatibility
-------------------------------------------------------------------------------
+- Ember.js v4.0 or above
+- Ember CLI v4.0 or above
+- Node.js v16 or above
 
-* Ember.js v4.0 or above
-* Ember CLI v4.0 or above
-* Node.js v16 or above
-
-
-Installation
-------------------------------------------------------------------------------
+## Installation
 
 ```
 ember install ember-cli-styles-preprocessor
 ```
 
-
-Usage
-------------------------------------------------------------------------------
+## Usage
 
 In order to preprocess styles, you must define them manually.
 This can be done either in the `ember-cli-build.js` file of an app as,
@@ -73,14 +66,10 @@ module.exports = {
 
 ```
 
-
-Contributing
-------------------------------------------------------------------------------
+## Contributing
 
 See the [Contributing](CONTRIBUTING.md) guide for details.
 
-
-License
-------------------------------------------------------------------------------
+## License
 
 This project is licensed under the [MIT License](LICENSE.md).

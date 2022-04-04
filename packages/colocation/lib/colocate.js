@@ -31,11 +31,7 @@ const MANIFEST_TEMPATES = {
 module.exports.ColocateStyles = class ColocateStyles extends Base {
   constructor(options) {
     super(options);
-    this.manifestTemplates = Object.assign(
-      {},
-      MANIFEST_TEMPATES,
-      options.manifestTemplates
-    );
+    this.manifestTemplates = Object.assign({}, MANIFEST_TEMPATES, options.manifestTemplates);
   }
 
   get name() {

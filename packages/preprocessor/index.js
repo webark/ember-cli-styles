@@ -22,10 +22,7 @@ module.exports = {
 
   setupPreprocessorRegistry(type, registry) {
     const options = this._options(registry);
-    const preprocessors = Object.assign(
-      {},
-      options.preprocessors
-    );
+    const preprocessors = Object.assign({}, options.preprocessors);
     registry.add('css', new Preprocessor(preprocessors));
   },
 

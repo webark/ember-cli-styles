@@ -1,9 +1,6 @@
 'use strict';
 
-const {
-  NamespaceStyles,
-  ColocatedNamespaceObjects,
-} = require('./lib/namespace.js');
+const { NamespaceStyles, ColocatedNamespaceObjects } = require('./lib/namespace.js');
 
 const { NamespaceHelperAst } = require('./lib/namespace-helper-ast');
 

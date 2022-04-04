@@ -19,10 +19,7 @@ module.exports = class StyleInfo extends Walker {
   }
 
   create(stylePath) {
-    const styleNamespace = componentNames.class(
-      stylePath,
-      this.terseClassNames
-    );
+    const styleNamespace = componentNames.class(stylePath, this.terseClassNames);
     const styleFile = this.fileContents(styleNamespace);
     const fullStyleFilePath = this.fullStylePath(stylePath);
 

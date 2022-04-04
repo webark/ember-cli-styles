@@ -12,9 +12,6 @@ module('Acceptance | aborted state', function (hooks) {
     await visit('/css/aborted-state');
 
     assert.strictEqual(currentURL(), '/css/nested');
-    assert.strictEqual(
-      this.styleFor('[class$=__nested]').color,
-      'rgb(0, 2, 0)'
-    );
+    assert.strictEqual(this.styleFor('[class$=__nested]').color, 'rgb(0, 2, 0)');
   });
 });

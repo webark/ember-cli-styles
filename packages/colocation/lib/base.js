@@ -4,7 +4,6 @@ module.exports = class Base {
   constructor(options) {
     this.getCssExtentions = options.getCssExtentions;
     this.baseName = options.baseName;
-    this.terseClassNames = options.terseClassNames;
   }
 
   get extentions() {
@@ -16,16 +15,14 @@ module.exports = class Base {
       srcDir,
       destDir,
       allowEmpty: true,
-      annotation:
-        'Funnel (ember-cli-styles-colocation grab files addon style files)',
+      annotation: 'Funnel (ember-cli-styles-colocation grab files addon style files)',
     });
 
     return funnel(baseFiles, {
       include: [`**/*.{${this.extentions},}`],
       exclude: [`**/styles/**/*`],
       allowEmpty: true,
-      annotation:
-        'Funnel (ember-cli-styles-colocation grab files addon style files)',
+      annotation: 'Funnel (ember-cli-styles-colocation grab files addon style files)',
     });
   }
 };

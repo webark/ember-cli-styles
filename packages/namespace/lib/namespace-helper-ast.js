@@ -22,8 +22,7 @@ function getArguments(moduleName) {
 }
 
 function addArguments(builders) {
-  return ({ param, type, value }) =>
-    builders.pair(param, builders[type](value));
+  return ({ param, type, value }) => builders.pair(param, builders[type](value));
 }
 
 function addNamespaceArguments(node, moduleName, builders) {
@@ -37,10 +36,7 @@ function addNamespaceArguments(node, moduleName, builders) {
   node.hash.pairs.push(...neededArguments.map(addArguments(builders)));
 }
 
-function namespaceHelperAstPlugin({
-  syntax: { builders },
-  meta: { moduleName } = {},
-}) {
+function namespaceHelperAstPlugin({ syntax: { builders }, meta: { moduleName } = {} }) {
   return {
     name: 'namespace-helper-ast-plugin',
 

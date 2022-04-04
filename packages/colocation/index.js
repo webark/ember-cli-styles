@@ -42,10 +42,7 @@ module.exports = {
     if (registry.app.trees) {
       return registry.app.trees.app;
     } else if (registry.app.treePaths.addon) {
-      return require('path').join(
-        registry.app.root,
-        registry.app.treePaths.addon
-      );
+      return require('path').join(registry.app.root, registry.app.treePaths.addon);
     }
   },
 
