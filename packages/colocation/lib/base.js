@@ -1,4 +1,7 @@
+const path = require('path');
+
 const funnel = require('broccoli-funnel');
+const merge = require('broccoli-merge-trees');
 
 module.exports = class Base {
   constructor(options) {
@@ -18,7 +21,13 @@ module.exports = class Base {
       annotation: 'Funnel (ember-cli-styles-colocation grab files addon style files)',
     });
 
-    return funnel(baseFiles, {
+    const classicStyles = funnel(tree, {
+      srcDir: path.join(srcDir, 'styles', 'component-styles'),
+      destDir,
+      allowEmpty: true,
+    });
+
+    return funnel(merge([baseFiles, classicStyles], { overwrite: true }), {
       include: [`**/*.{${this.extentions},}`],
       exclude: [`**/styles/**/*`],
       allowEmpty: true,
