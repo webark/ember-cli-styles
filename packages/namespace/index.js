@@ -5,30 +5,34 @@ const { NamespaceStyles, ColocatedNamespaceObjects } = require('./lib/namespace.
 const { NamespaceHelperAst } = require('./lib/namespace-helper-ast');
 
 module.exports = {
-  _defaultOptions(registry) {
+  _defaultOptions(app, registry) {
     return {
       terseClassNames: false,
-      baseName: registry.app.name,
+      baseName: app.name,
       getCssExtentions: registry.extensionsForType.bind(registry, 'css'),
     };
   },
 
-  _overrideOptions({ app: { options = {} } }) {
+  _overrideOptions({ options = {} }) {
     return {
       terseClassNames: options.enviroment,
       ...options.emberCliStylesOptions,
     };
   },
 
-  _options(registry) {
+  _options(app, registry) {
     return {
-      ...this._defaultOptions(registry),
-      ...this._overrideOptions(registry),
+      ...this._defaultOptions(app, registry),
+      ...this._overrideOptions(app),
     };
   },
 
   setupPreprocessorRegistry(type, registry) {
-    const options = this._options(registry);
+    const app = registry.app || this._findHost();
+
+    if (type !== 'parent' || !app) return;
+
+    const options = this._options(app, registry);
 
     registry.add('css', new NamespaceStyles(options));
     registry.add('js', new ColocatedNamespaceObjects(options));
