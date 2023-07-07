@@ -3,24 +3,24 @@
 const { MoveColocatedStyles, ColocateStyles } = require('./lib/colocate.js');
 
 module.exports = {
-  _defaultOptions(registry) {
+  _defaultOptions(app, registry) {
     return {
-      baseName: registry.app.name,
+      baseName: app.name,
       getCssExtentions: registry.extensionsForType.bind(registry, 'css'),
       forceMoveColocatedStyles: this.isAddon(),
     };
   },
 
-  _overrideOptions({ app: { options = {} } }) {
+  _overrideOptions({ options = {} }) {
     return {
       ...options.emberCliStylesOptions,
     };
   },
 
-  _options(registry) {
+  _options(app, registry) {
     return {
-      ...this._defaultOptions(registry),
-      ...this._overrideOptions(registry),
+      ...this._defaultOptions(app, registry),
+      ...this._overrideOptions(app),
     };
   },
 
@@ -29,25 +29,29 @@ module.exports = {
   },
 
   setupPreprocessorRegistry(type, registry) {
-    const options = this._options(registry);
+    const app = registry.app || this._findHost();
+
+    if (type !== 'parent' || !app) return;
+
+    const options = this._options(app, registry);
 
     if (options.forceMoveColocatedStyles) {
-      this.addStylesHack(registry, options);
+      this.addStylesHack(app, registry, options);
     }
 
     registry.add('css', new ColocateStyles(options));
   },
 
-  basePath(registry) {
-    if (registry.app.trees) {
-      return registry.app.trees.app;
-    } else if (registry.app.treePaths.addon) {
-      return require('path').join(registry.app.root, registry.app.treePaths.addon);
+  basePath(app) {
+    if (app.trees) {
+      return app.trees.app;
+    } else if (app.treePaths.addon) {
+      return require('path').join(app.root, app.treePaths.addon);
     }
   },
 
-  addStylesHack(registry, options) {
-    const addonRealDir = this.basePath(registry);
+  addStylesHack(app, registry, options) {
+    const addonRealDir = this.basePath(app);
 
     registry.add(
       'css',
