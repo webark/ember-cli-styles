@@ -5,19 +5,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [1.0.0-alpha.5](https://github.com/webark/ember-cli-styles/compare/ember-cli-styles-preprocessor@1.0.0-alpha.3...ember-cli-styles-preprocessor@1.0.0-alpha.5) (2022-04-04)
 
-
 ### Bug Fixes
 
-* **preprocessor:** added in option dependencies for preprocessors ([5aea8fb](https://github.com/webark/ember-cli-styles/commit/5aea8fb59f9dac22e4aa3dddcb48e72c2f235933))
-
+- **preprocessor:** added in option dependencies for preprocessors ([5aea8fb](https://github.com/webark/ember-cli-styles/commit/5aea8fb59f9dac22e4aa3dddcb48e72c2f235933))
 
 ### Features
 
-* **preprocessor:** updated preprocessor to not include any by default. They must be manually added fixes [#8](https://github.com/webark/ember-cli-styles/issues/8) ([9d4edb8](https://github.com/webark/ember-cli-styles/commit/9d4edb89bdf8e66ce49f32920eded8d971cdab8d))
-
-
-
-
+- **preprocessor:** updated preprocessor to not include any by default. They must be manually added fixes [#8](https://github.com/webark/ember-cli-styles/issues/8) ([9d4edb8](https://github.com/webark/ember-cli-styles/commit/9d4edb89bdf8e66ce49f32920eded8d971cdab8d))
 
 # [1.0.0-alpha.4](https://github.com/webark/ember-cli-styles/compare/ember-cli-styles-preprocessor@1.0.0-alpha.3...ember-cli-styles-preprocessor@1.0.0-alpha.4) (2022-02-11)
 

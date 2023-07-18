@@ -7,10 +7,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package ember-cli-styles-component-css-support
 
-
-
-
-
 # [1.0.0-alpha.3](https://github.com/webark/ember-cli-styles/compare/ember-cli-styles-component-css-support@1.0.0-alpha.2...ember-cli-styles-component-css-support@1.0.0-alpha.3) (2022-02-11)
 
 **Note:** Version bump only for package ember-cli-styles-component-css-support
