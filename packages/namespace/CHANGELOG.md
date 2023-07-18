@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.9](https://github.com/webark/ember-cli-styles/compare/ember-cli-styles-namespace@1.0.0-alpha.8...ember-cli-styles-namespace@1.0.0-alpha.9) (2023-07-18)
+
+**Note:** Version bump only for package ember-cli-styles-namespace
+
+
+
+
+
 # [1.0.0-alpha.8](https://github.com/webark/ember-cli-styles/compare/ember-cli-styles-namespace@1.0.0-alpha.6...ember-cli-styles-namespace@1.0.0-alpha.8) (2022-04-04)
 
 ### Bug Fixes
