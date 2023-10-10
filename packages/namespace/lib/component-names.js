@@ -5,7 +5,10 @@ module.exports = {
   path(actualPath) {
     const { dir, name } = path.parse(actualPath);
 
-    return path.join(dir, name.replace(/(template|component|styles?|index)$/, ''));
+    return path.join(
+      dir.replace(/(templates|components)/g, ''),
+      name.replace(/(template|component|styles?|index)$/g, '')
+    );
   },
 
   class(actualPath, terseClassNames) {

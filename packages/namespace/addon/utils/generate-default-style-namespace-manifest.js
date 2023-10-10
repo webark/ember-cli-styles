@@ -4,7 +4,8 @@ function formatFullName(stylePath) {
   return stylePath
     .replace(/(\/(styles?|index))?\.(css|less|scss|sass|styl)$/, '')
     .replace(/.*?\//, '')
-    .replace(/^components\//, '');
+    .replace(/^components\//, '')
+    .replace(/^templates\//, '');
 }
 
 export function generateDefaultStyleNamespaceManifest(owner, styleExtensions) {
