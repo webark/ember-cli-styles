@@ -27,6 +27,10 @@ module.exports = {
     };
   },
 
+  _buildPlugin() {
+    return new NamespaceHelperAst();
+  },
+
   setupPreprocessorRegistry(type, registry) {
     const app = registry.app || this._findHost();
 
@@ -37,7 +41,14 @@ module.exports = {
     registry.add('css', new NamespaceStyles(options));
     registry.add('js', new ColocatedNamespaceObjects(options));
 
-    registry.add('htmlbars-ast-plugin', new NamespaceHelperAst());
+    const pluginObj = this._buildPlugin();
+
+    pluginObj.parallelBabel = {
+      requireFile: __filename,
+      buildUsing: '_buildPlugin',
+    };
+
+    registry.add('htmlbars-ast-plugin', pluginObj);
   },
 
   name: require('./package').name,
